@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Convidados Kotlin</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_todos_convidados">Todos</string>
+    <string name="menu_presentes">Presentes</string>
+    <string name="menu_ausentes">Ausentes</string>
+    <string name="cadastro_convidado">Cadastro de convidados</string>
+    <string name="ausentes">Ausentes</string>
+    <string name="presentes">Presentes</string>
+    <string name="todos_convidados">Todos convidados</string>
+    <string name="salvar">Salvar</string>
+    <string name="ausente">Ausente</string>
+    <string name="presente">Presente</string>
+    <string name="nao_confirmado">Não confirmado</string>
+    <string name="confirmacao">Confirmação</string>
+    <string name="nome">Nome</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="remocao_convidado">Remoção de convidado</string>
+    <string name="deseja_remover">Deseja remover convidado da lista?</string>
+    <string name="remover">Remover</string>
+    <string name="removido_com_sucesso">Convidado removido com sucesso.</string>
+    <string name="total">Total</string>
+</resources>

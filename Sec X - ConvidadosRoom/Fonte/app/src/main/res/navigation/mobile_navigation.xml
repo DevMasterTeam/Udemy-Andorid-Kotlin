@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_all">
+
+    <fragment
+        android:id="@+id/nav_all"
+        android:name="com.devmasterteam.convidados.view.AllGuestsFragment"
+        android:label="@string/todos_convidados"
+        tools:layout="@layout/fragment_all" />
+
+    <fragment
+        android:id="@+id/nav_absent"
+        android:name="com.devmasterteam.convidados.view.AbsentFragment"
+        android:label="@string/ausentes"
+        tools:layout="@layout/fragment_absent" />
+
+    <fragment
+        android:id="@+id/nav_present"
+        android:name="com.devmasterteam.convidados.view.PresentFragment"
+        android:label="@string/presentes"
+        tools:layout="@layout/fragment_present" />
+
+</navigation>

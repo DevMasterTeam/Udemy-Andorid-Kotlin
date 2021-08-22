@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Tasks</string>
+
+    <string name="ERROR_UNEXPECTED">Um erro inesperado ocorreu. Tente novamente mais tarde.</string>
+    <string name="ERROR_LOAD_TASK">Erro ao carregar a tarefa.</string>
+    <string name="ERROR_INTERNET_CONNECTION">Conexão à internet necessária para uso da applicação.</string>
+
+    <string name="task_updated">Tarefa atualizada com sucesso!</string>
+    <string name="task_created">Tarefa criada com sucesso!</string>
+    <string name="task_removed">Tarefa removida com sucesso!</string>
+
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="login">Login</string>
+    <string name="nome">Nome</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="descricao">Descrição</string>
+    <string name="prioridade">Prioridade</string>
+    <string name="data_limite">Data Limite</string>
+    <string name="update_task">Atualizar tarefa</string>
+    <string name="clique_para_selecionar_a_data">Clique para selecionar a data limite</string>
+    <string name="completa">Completa</string>
+    <string name="adicionar_tarefa">Adicionar tarefa</string>
+    <string name="sim">Sim</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="remocao_de_tarefa">Remoção de tarefa</string>
+    <string name="remover_tarefa">Remover tarefa?</string>
+    <string name="nao_tem_uma_conta">Não tem uma conta?</string>
+    <string name="cadastre_se">Cadastre-se</string>
+    <string name="entrar">Entrar</string>
+    <string name="sair">Sair</string>
+    <string name="expiradas">Expiradas</string>
+    <string name="todas_tarefas">Tarefas</string>
+    <string name="proximos_7_dias">Próximos 7 dias</string>
+
+</resources>
