@@ -2,7 +2,6 @@
  * Assim como if/else, when também é uma expressão e pode retornar valores.
  */
 fun main() {
-
 }
 
 fun acontecimentoWhen(ano: Int) {
@@ -16,14 +15,6 @@ fun acontecimentoWhen(ano: Int) {
         else -> {
             println("Deixemos pro futuro.")
         }
-    }
-}
-
-fun calculaBonus(cargo: String, salario: Float) {
-    when {
-        cargo == "Gerente" && salario > 2000 -> println("O bônus é de ${salario * 0.5f}")
-        cargo == "Gerente" && salario > 3000 -> println("O bônus é de ${salario * 0.6f}")
-        else -> print("Bônus padrão de R$300,00")
     }
 }
 
@@ -43,14 +34,8 @@ fun operacao(a: Int, b: Int, operacao: String): Int {
 
 fun operacao2(a: Int, b: Int, operacao: String): Int {
     return when (operacao) {
-        "Soma" -> {
-            a + b
-        }
-        "Subtracao" -> {
-            a - b
-        }
-        else -> {
-            0
-        }
+        "Soma" -> a + b
+        "Subtracao" -> a - b
+        else -> 0
     }
 }
