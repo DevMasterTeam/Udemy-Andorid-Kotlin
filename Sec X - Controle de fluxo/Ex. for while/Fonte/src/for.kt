@@ -30,7 +30,16 @@ fun ex4() {
     println("Soma: $soma")
 }
 
-fun ex5(n: Int) {
+fun ex5 (n: Int) {
+    for (i in 1..n) {
+        for (j in 1..i) {
+            print("#")
+        }
+        println()
+    }
+}
+
+fun ex5While(n: Int) {
     var str = ""
     var contador = 1
     var i = 0

@@ -8,7 +8,7 @@ fun ex1() {
     print("Informe o segundo valor: ")
     val lado2 = readLine()
 
-    if (lado1 != null && lado2 != null) {
+    if (lado1 != "" && lado2 != "") {
         if (lado1 == lado2) {
             println("Quadrado")
         } else {
@@ -27,7 +27,7 @@ fun ex2() {
     print("Informe o terceiro valor: ")
     val lado3 = readLine()
 
-    if (lado1 != null && lado2 != null && lado3 != null) {
+    if (lado1 != "" && lado2 != "" && lado3 != "") {
         if ((lado1 == lado2) && (lado2 == lado3)) {
             println("Equilátero")
         } else {
@@ -46,41 +46,42 @@ fun qualASaida(num: Int) {
 }
 
 fun portaria() {
+    print("Qual sua idade? ")
+    val idade = readLine()
 
-    print("Digite sua idade: ");
-    var info = readLine()
-    if (info == null) {
-        return
-    }
-    val idade = info.toInt()
-
-    if (idade < 18) {
-        println("Negado. Menores de idade não são permitidos.")
-    } else {
-        print("Informe o tipo de convite: ")
-        val tipo = readLine()
-
-        if (tipo == null)
+    if (idade != null && idade != "") {
+        if (idade.toInt() < 18) {
+            println("Negado. Menores de idade não são permitidos.")
             return
+        }
+    }
 
-        if (tipo == "comum" || tipo == "premium" || tipo == "luxo") {
-            print("Informe o código: ")
-            var codigo = readLine()
+    print("Qual é o tipo de convite? ")
+    var tipoConvite = readLine()
 
-            if (codigo == null)
-                return
+    if (tipoConvite != null && tipoConvite != "") {
+        tipoConvite = tipoConvite.lowercase()
 
+        // Validação do tipo de convite
+        if (tipoConvite != "comum" && tipoConvite != "premium" && tipoConvite != "luxo") {
+            println("Negado. Convite inválido.")
+            return
+        }
+
+        print("Qual o código do convite? ")
+        var codigo = readLine()
+
+        if (codigo != null && codigo != "") {
             codigo = codigo.lowercase()
 
-            if (tipo == "comum" && codigo.startsWith("xt")) {
+            if (tipoConvite == "comum" && codigo.startsWith("xt")) {
                 println("Welcome :)")
-            } else if (codigo.startsWith("xl")) {
+            } else if ((tipoConvite == "premium" || tipoConvite == "luxo") && codigo.startsWith("xl")
+            ) {
                 println("Welcome :)")
             } else {
-                println("Negado. Convite inválido.")
+                println("Negado. Convite inválido")
             }
-        } else {
-            println("Negado. Convite inválido.")
         }
     }
 }
