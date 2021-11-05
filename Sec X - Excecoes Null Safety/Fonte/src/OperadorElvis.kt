@@ -1,7 +1,6 @@
 /**
  * Operador Elvis :?
- * Retorna a parte esquerda da expressão caso não seja nulo.
- * Se for nulo, retorna a parte direita.
+ * Se a parte esquerda da expressão for nulo, retorna a parte da direita.
  */
 fun main() {
     val str: String? = null
@@ -14,4 +13,8 @@ fun main() {
     }
 
     println(str ?: "NULO")
+
+
+    // TODO Não existe operador ternário em Kotlin
+
 }

@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.*
 import kotlin.IndexOutOfBoundsException
 
-class mainTest {
+class MainTest {
 
     @Test
     @DisplayName("Funcionamento XO")
@@ -47,6 +47,17 @@ class mainTest {
         assertThrows<IndexOutOfBoundsException> {
             throw IndexOutOfBoundsException("Index fora do array.")
         }
+    }
+
+    @Test
+    @DisplayName("Teste de não nulo.")
+    fun testNotNull() {
+        // Testa se o retorno da função é diferente de nulo.
+        Assertions.assertNotNull(countXO("xo"))
+
+        // Muito cuidado em cenários desse tipo, pois pode ser que a função
+        // nunca tenha o retorno nulo. Nesse caso, esse teste nunca falha,
+        // mesmo que a função esteja com comportamento incorreto.
     }
 
 }
