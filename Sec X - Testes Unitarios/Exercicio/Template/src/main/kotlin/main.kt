@@ -1,5 +1,4 @@
 fun portaria(idade: Int, tpConvite: String, cod: String): String {
-
     if (idade < 18) {
         return "Negado."
     }
@@ -7,23 +6,20 @@ fun portaria(idade: Int, tpConvite: String, cod: String): String {
     if (tpConvite != "") {
         val tipoConvite = tpConvite.lowercase()
 
-        // Validação do tipo de convite
         if (tipoConvite != "comum" && tipoConvite != "premium" && tipoConvite != "luxo") {
             return "Negado."
         }
 
         if (cod != "") {
             val codigo = cod.lowercase()
-
             return if (tipoConvite == "comum" && codigo.startsWith("xt")) {
-                "Welcome"
+                "Welcome."
             } else if ((tipoConvite == "premium" || tipoConvite == "luxo") && codigo.startsWith("xl")) {
-                "Welcome"
+                "Welcome."
             } else {
                 "Negado."
             }
         }
     }
-
     return "Negado."
 }
