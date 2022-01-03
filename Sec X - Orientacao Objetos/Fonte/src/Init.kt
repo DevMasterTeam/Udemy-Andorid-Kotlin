@@ -4,13 +4,13 @@ fun main() {
     val nina = Animal("Cachorro")
 }
 
-class Animal(val tipo: String) {
+class Animal(val especie: String) {
     var fala: String = ""
 
     init {
-        fala = if (tipo.lowercase() == "cachorro") {
+        fala = if (especie.lowercase() == "cachorro") {
             "au"
-        } else if (tipo.lowercase() == "gato") {
+        } else if (especie.lowercase() == "gato") {
             "miau"
         } else {
             ""

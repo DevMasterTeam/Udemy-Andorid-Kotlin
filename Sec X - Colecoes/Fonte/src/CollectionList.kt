@@ -26,4 +26,9 @@ fun main() {
     println("Tamanho da lista 3: ${lista3.size}")
     println(lista3)
 
+    // Verifica se existe um elemento
+    println(lista3.contains(8))
+
+    // Limpando a coleção - Somente possível em mutável
+    lista3.clear()
 }

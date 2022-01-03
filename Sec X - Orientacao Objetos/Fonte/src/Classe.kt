@@ -26,7 +26,7 @@ class Pessoa1
  * Os mesmos conceitos de var e val se aplicam as classes.
  * Atributos que uma vez são atribuídos valor e não mudam podem ser declarados como val.
  * Atributos cujo valor muda constantemente devem ser declarados como var
- * Da mesma maneira, se não há 'corpo' para uma classe (atributos ou funções), não há necessidade de chaves.
+ * Se não há 'corpo' para uma classe (atributos ou funções), não há necessidade de chaves.
  */
 class Pessoa2(var nome: String, val anoNascimento: Int)
 

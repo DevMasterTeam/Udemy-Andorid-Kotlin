@@ -7,15 +7,29 @@ class MainTest {
     @Test
     @DisplayName("Faz o teste dos cenarios da portaria")
     fun testPortaria() {
+
+        // Caso falhe um, não executa o próximo teste
+        Assertions.assertEquals(portaria(15, "", ""), "Negado.")
+        Assertions.assertEquals(portaria(20, "", ""), "Negado.")
+        Assertions.assertEquals(portaria(25, "VIP", ""), "Negado.")
+        Assertions.assertEquals(portaria(25, "comum", "xt45689"), "Welcome.")
+        Assertions.assertEquals(portaria(25, "comum", "45689"), "Negado.")
+        Assertions.assertEquals(portaria(25, "premium", "xt45689"), "Negado.")
+        Assertions.assertEquals(portaria(25, "premium", "45689"), "Negado.")
+        Assertions.assertEquals(portaria(25, "premium", "xl45689"), "Welcome.")
+        Assertions.assertEquals(portaria(25, "luxo", "xl45689"), "Welcome.")
+
+        // Executa todos os testes independente de falha ou sucesso
         Assertions.assertAll(
-            { Assertions.assertEquals(portaria(15, "comum", cod = "xt51"), "Negado.") },
-            { Assertions.assertEquals(portaria(19, "comum", cod = "xt51"), "Welcome.") },
-            { Assertions.assertEquals(portaria(15, "mega", cod = "xt51"), "Negado.") },
-            { Assertions.assertEquals(portaria(19, "mega", cod = "xt51"), "Negado.") },
-            { Assertions.assertEquals(portaria(50, "premium", cod = "xl98451"), "Welcome.") },
-            { Assertions.assertEquals(portaria(40, "luxo", cod = "LX51"), "Negado.") },
-            { Assertions.assertEquals(portaria(40, "", cod = "LX51"), "Negado.") },
-            { Assertions.assertEquals(portaria(40, "luxo", cod = ""), "Negado.") },
+            { Assertions.assertEquals(portaria(15, "", ""), "Negado.") },
+            { Assertions.assertEquals(portaria(20, "", ""), "Negado.") },
+            { Assertions.assertEquals(portaria(25, "VIP", ""), "Negado.") },
+            { Assertions.assertEquals(portaria(25, "comum", "xt45689"), "Welcome.") },
+            { Assertions.assertEquals(portaria(25, "comum", "45689"), "Negado.") },
+            { Assertions.assertEquals(portaria(25, "premium", "xt45689"), "Negado.") },
+            { Assertions.assertEquals(portaria(25, "premium", "45689"), "Negado.") },
+            { Assertions.assertEquals(portaria(25, "premium", "xl45689"), "Welcome.") },
+            { Assertions.assertEquals(portaria(25, "luxo", "xl45689"), "Welcome.") }
         )
     }
 

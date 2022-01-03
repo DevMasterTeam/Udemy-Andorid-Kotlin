@@ -23,4 +23,12 @@ fun main() {
     map2.remove("Alemanha")
     println(map2)
 
+    // Verifica se existe o elemento
+    println(map2.contains("França"))
+
+    // Imprime o valor associada a chave
+    println(map2["França"])
+
+    // Limpando a coleção - Somente possível em mutável
+    map2.clear()
 }

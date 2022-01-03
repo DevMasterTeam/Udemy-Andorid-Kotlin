@@ -23,10 +23,10 @@ fun main() {
     println("Tenho ${data.count()} receitas.")
 
     // Tenho alguma receita de Lasanha?
-    println("Tenho receitas de Lasanha? ${if (data.any { it.nome.contains("Lasanha") }) "sim" else "não"}.")
+    println("Tenho receitas de Lasanha? ${if (data.any { it.nome == "Lasanha" }) "sim" else "não"}.")
 
     // Quantas receitas de Lasanha?
-    println("Tenho ${data.count { it.nome.contains("Lasanha") }} receitas de Lasanha.")
+    println("Tenho ${data.count { it.nome == "Lasanha" }} receitas de Lasanha.")
 
     // Qual a primeira e última receita?
     println("A primeira receita é: ${data.first().nome}.")
@@ -62,7 +62,7 @@ fun main() {
     // Faça uma lista com o nome dos pratos
     data.map { it.nome }
 
-    // Qual a média de calor de todas as receitas?
+    // Qual a média de caloria de todas as receitas?
     val media = data.map { it.calorias }.average()
     println("A média de calorias é: $media.")
 

@@ -5,14 +5,14 @@
  */
 fun main() {
     val cachorro = Cachorro("Bolt")
-    cachorro.talk()
+    cachorro.falar()
     cachorro.nome()
 }
 
 abstract class Mamifero(val nome: String) {
     private var peso = 0f
 
-    abstract fun talk()
+    abstract fun falar()
     open fun nome() {
         println("Sou um mamífero: $nome")
     }
@@ -22,9 +22,9 @@ abstract class Mamifero(val nome: String) {
  * Herda de mamífero
  * Implementa obrigatoriamente a função definida como abstrata na classe pai.
  * Não precisa implementar métodos que não são definidos como abstratos, mas poderia com o uso do override.
-*/
+ */
 class Cachorro(especie: String) : Mamifero(especie) {
-    override fun talk() {
+    override fun falar() {
         println("Au au")
     }
 
