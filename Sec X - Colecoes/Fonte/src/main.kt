@@ -32,6 +32,10 @@ fun main() {
     println("A primeira receita é: ${data.first().nome}.")
     println("A última receita é: ${data.last().nome}.")
 
+    // Caso a lista possa ser vazia
+    // data.firstOrNull()
+    // data.lastOrNull()
+
     // Qual a soma de calorias?
     val sumCalories = data.sumOf { it.calorias }
     println("A soma de calorias é: $sumCalories")
@@ -87,11 +91,10 @@ private fun listaDeDados(): List<Receita> {
         Receita(
             "Lasanha", 1200,
             listOf(
-                Ingredientes("Farinha", 1),
-                Ingredientes("Presunto", 5),
-                Ingredientes("Queijo", 10),
-                Ingredientes("Molho de tomate", 2),
-                Ingredientes("Manjerição", 3)
+                Ingrediente("Presunto", 5),
+                Ingrediente("Queijo", 10),
+                Ingrediente("Molho de tomate", 2),
+                Ingrediente("Manjerição", 3)
             )
         ),
         Receita("Panqueca", 500),
@@ -101,17 +104,17 @@ private fun listaDeDados(): List<Receita> {
         Receita(
             "Hamburguer", 2000,
             listOf(
-                Ingredientes("Pão", 1),
-                Ingredientes("Hamburguer", 3),
-                Ingredientes("Queijo", 1),
-                Ingredientes("Catupiry", 1),
-                Ingredientes("Bacon", 3),
-                Ingredientes("Alface", 1),
-                Ingredientes("Tomate", 1)
+                Ingrediente("Pão", 1),
+                Ingrediente("Hamburguer", 3),
+                Ingrediente("Queijo", 1),
+                Ingrediente("Catupiry", 1),
+                Ingrediente("Bacon", 3),
+                Ingrediente("Alface", 1),
+                Ingrediente("Tomate", 1)
             )
         )
     )
 }
 
-data class Receita(val nome: String, val calorias: Int, val ingredientes: List<Ingredientes> = listOf())
-data class Ingredientes(val nome: String, val quantidade: Int)
+data class Receita(val nome: String, val calorias: Int, val ingredientes: List<Ingrediente> = listOf())
+data class Ingrediente(val nome: String, val quantidade: Int)
