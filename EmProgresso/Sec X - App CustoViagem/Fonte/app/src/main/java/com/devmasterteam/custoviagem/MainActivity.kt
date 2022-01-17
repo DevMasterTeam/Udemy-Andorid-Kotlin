@@ -3,6 +3,7 @@ package com.devmasterteam.custoviagem
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import com.devmasterteam.custoviagem.databinding.ActivityMainBinding
 
@@ -22,7 +23,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Acesso aos elementos de interface via 'binding'
         binding.buttonCalculate.setOnClickListener(this)
-
     }
 
     // Função responsável por tratar qualquer evento de click nos elementos
