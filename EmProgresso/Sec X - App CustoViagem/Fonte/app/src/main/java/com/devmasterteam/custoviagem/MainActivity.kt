@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val id: Int = view.id
 
         // Verifica se o elemento é o que nos interessa
-        if (id == R.id.buttonCalculate) {
+        if (id == R.id.button_calculate) {
             calculate()
         }
     }
@@ -48,9 +48,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         .toFloat() * binding.editPrice.text.toString().toFloat())
                             / binding.editAutonomy.text.toString().toFloat())
 
-
                 // Seta o valor calculado na tela - Formatado com duas casas
-                binding.textResult.text = "R$ ${"%.2f".format(total)}"
+                binding.textResultValue.text = "R$ ${"%.2f".format(total)}"
 
             } catch (nfe: NumberFormatException) {
                 // Caso ocorra erro de conversão numérica, solicita ao usuário para preencher com valores válidos

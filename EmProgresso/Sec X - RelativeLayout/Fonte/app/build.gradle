@@ -4,13 +4,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    compileSdk 31
 
     defaultConfig {
-        applicationId "com.devmasterteam.motivation"
-        minSdkVersion 21
-        targetSdkVersion 31
+        applicationId "com.devmasterteam.relativelayout"
+        minSdk 23
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -30,14 +29,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'

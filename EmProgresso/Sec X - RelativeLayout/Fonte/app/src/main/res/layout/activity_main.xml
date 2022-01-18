@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".MainActivity">
 
@@ -19,7 +18,8 @@
         android:id="@+id/text_km"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_below="@id/edit_distance"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
         android:text="@string/total_de_quilometros" />
 
@@ -27,6 +27,7 @@
         android:id="@+id/edit_price"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/text_km"
         android:layout_marginTop="24dp"
         android:hint="@string/preco"
         android:importantForAutofill="no"
@@ -36,6 +37,8 @@
         android:id="@+id/text_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edit_price"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
         android:text="@string/preco_por_litro" />
@@ -44,6 +47,7 @@
         android:id="@+id/edit_autonomy"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/text_price"
         android:layout_marginTop="24dp"
         android:hint="@string/autonomia"
         android:importantForAutofill="no"
@@ -53,6 +57,8 @@
         android:id="@+id/text_autonomy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edit_autonomy"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
         android:text="@string/kms_por_litro" />
@@ -61,6 +67,7 @@
         android:id="@+id/text_result_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/text_autonomy"
         android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/label_gasto_total"
@@ -71,6 +78,7 @@
         android:id="@+id/text_result_value"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_below="@id/text_result_label"
         android:gravity="center"
         android:text="@string/br_zero"
         android:textAllCaps="true"
@@ -81,6 +89,7 @@
         android:id="@+id/button_calculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/text_result_value"
         android:backgroundTint="@color/lightGreen"
         android:padding="16dp"
         android:text="@string/calcular"
@@ -88,4 +97,4 @@
         android:textColor="@color/white"
         android:textSize="20sp" />
 
-</LinearLayout>
+</RelativeLayout>
