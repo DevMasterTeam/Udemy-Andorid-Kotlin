@@ -40,9 +40,9 @@
         android:layout_marginLeft="18dp"
         android:layout_marginTop="12dp"
         android:layout_marginRight="18dp"
-        android:backgroundTint="#D8D8D8"
+        android:backgroundTint="#DADADA"
         android:text="Login"
-        android:textColor="#0AA37D" />
+        android:textColor="#08AD7F" />
 
     <TextView
         android:layout_width="wrap_content"
