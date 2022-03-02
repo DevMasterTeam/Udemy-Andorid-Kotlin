@@ -3,7 +3,6 @@ package com.devmasterteam.custoviagem
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import com.devmasterteam.custoviagem.databinding.ActivityMainBinding
 
@@ -40,28 +39,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     // Baseado na distância percorrida * preço médio do combustível / pela autonomia do veículo
     private fun calculate() {
         if (isValidationOk()) {
-            try {
 
-                // Realiza o cálculo ((distancia * preço) / autonomia)
-                val total =
-                    ((binding.editDistance.text.toString()
-                        .toFloat() * binding.editPrice.text.toString().toFloat())
-                            / binding.editAutonomy.text.toString().toFloat())
+            val distance = binding.editDistance.text.toString().toFloat()
+            val price = binding.editPrice.text.toString().toFloat()
+            val autonomy = binding.editAutonomy.text.toString().toFloat()
 
-                // Seta o valor calculado na tela - Formatado com duas casas
-                binding.textResultValue.text = "R$ ${"%.2f".format(total)}"
+            // Realiza o cálculo ((distancia * preço) / autonomia)
+            val total = (distance * price) / autonomy
 
-            } catch (nfe: NumberFormatException) {
-                // Caso ocorra erro de conversão numérica, solicita ao usuário para preencher com valores válidos
-                Toast.makeText(
-                    this,
-                    getString(R.string.preenche_valores_validos),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            // Seta o valor calculado na tela - Formatado com duas casas
+            binding.textTotalValue.text = "R$ ${"%.2f".format(total)}"
+
+
         } else {
             // Caso não tenha preenchido todos os campos, solicita o preenchimento
-            Toast.makeText(this, getString(R.string.preencha_campos), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.validation_fill_all_fields), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

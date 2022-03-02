@@ -10,82 +10,76 @@
     <EditText
         android:id="@+id/edit_distance"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/distancia"
-        android:importantForAutofill="no"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/distance"
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/text_km"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:text="@string/total_de_quilometros" />
+        android:gravity="center"
+        android:text="@string/total_km" />
 
     <EditText
         android:id="@+id/edit_price"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:hint="@string/preco"
-        android:importantForAutofill="no"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="@string/price"
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/text_price"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:text="@string/preco_por_litro" />
+        android:gravity="center"
+        android:text="@string/price_per_liter" />
 
     <EditText
         android:id="@+id/edit_autonomy"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:hint="@string/autonomia"
-        android:importantForAutofill="no"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="@string/autonomy"
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/text_autonomy"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:text="@string/kms_por_litro" />
+        android:gravity="center"
+        android:text="@string/kms_per_liter" />
 
     <TextView
-        android:id="@+id/text_result_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="@string/label_gasto_total"
+        android:text="@string/total_spend"
         android:textAllCaps="true"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/text_result_value"
+        android:id="@+id/text_total_value"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="@string/br_zero"
+        android:text="@string/total_value"
         android:textAllCaps="true"
-        android:textColor="@color/darkBlue"
-        android:textSize="35sp" />
+        android:textColor="@color/purple_700"
+        android:textSize="38sp" />
 
     <Button
         android:id="@+id/button_calculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/lightGreen"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/teal_200"
         android:padding="16dp"
-        android:text="@string/calcular"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:text="@string/calculate"
         android:textSize="20sp" />
 
 </LinearLayout>

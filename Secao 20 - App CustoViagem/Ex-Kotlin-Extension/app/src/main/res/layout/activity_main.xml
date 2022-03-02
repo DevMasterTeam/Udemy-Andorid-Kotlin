@@ -11,8 +11,7 @@
         android:id="@+id/editDistance"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="@string/distancia"
-        android:importantForAutofill="no"
+        android:hint="@string/distance"
         android:inputType="number" />
 
     <TextView
@@ -21,15 +20,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:text="@string/total_de_quilometros" />
+        android:text="@string/total_km" />
 
     <EditText
         android:id="@+id/editPrice"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:hint="@string/preco"
-        android:importantForAutofill="no"
+        android:hint="@string/price"
         android:inputType="numberDecimal" />
 
     <TextView
@@ -38,15 +36,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:text="@string/preco_por_litro" />
+        android:text="@string/price_per_liter" />
 
     <EditText
         android:id="@+id/editAutonomy"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:hint="@string/autonomia"
-        android:importantForAutofill="no"
+        android:hint="@string/autonomy"
         android:inputType="numberDecimal" />
 
     <TextView
@@ -55,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:text="@string/kms_por_litro" />
+        android:text="@string/kms_per_liter" />
 
     <TextView
         android:id="@+id/labelResult"
@@ -63,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:gravity="center"
-        android:text="@string/label_gasto_total"
+        android:text="@string/total_spend"
         android:textAllCaps="true"
         android:textSize="16sp" />
 
@@ -72,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
-        android:text="@string/br_zero"
+        android:text="@string/total_value"
         android:textAllCaps="true"
         android:textColor="@color/darkBlue"
         android:textSize="35sp" />
@@ -83,7 +80,7 @@
         android:layout_height="wrap_content"
         android:background="@color/lightGreen"
         android:padding="16dp"
-        android:text="@string/calcular"
+        android:text="@string/calculate"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="20sp" />
