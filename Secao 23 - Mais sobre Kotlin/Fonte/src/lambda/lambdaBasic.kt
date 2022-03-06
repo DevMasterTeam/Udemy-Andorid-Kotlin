@@ -7,7 +7,8 @@ package lambda
  * { x: Int -> println(x) }
  * { x: Int, y: Int -> println(x + y) }
  *
- * Lambdas sendo passados por parâmetros, ou seja, comportamentos sendo passados por parâmetros
+ * Lambdas pode ser  passados por parâmetros, ou seja, 
+ * comportamentos podem ser passados por parâmetros.
  *
  */
 fun main() {

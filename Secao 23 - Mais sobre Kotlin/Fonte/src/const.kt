@@ -1,7 +1,7 @@
 /**
- * O modificador const só é permitido em declarações fora da classe ou
- * dentro de objects e companion objects. Isso é chamado de "top-level declaration"
- * que significa declarações de alto nível.
+ * O modificador const só é permitido em declarações fora da classe ("top-level declaration")
+ * Também é permitido dentro de objects e companion objects,
+ * pois ficam como escopo da classe e não da instância.
  *
  * Variáveis const só podem ser atribuídas valores fixos e nunca retorno de funções.
  */
@@ -25,6 +25,3 @@ class Const {
 }
 
 fun method() = "Hello World 3"
-
-fun main() {
-}

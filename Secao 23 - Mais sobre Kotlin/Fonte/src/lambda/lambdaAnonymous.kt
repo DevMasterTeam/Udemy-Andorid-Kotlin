@@ -14,11 +14,8 @@ interface EventListener {
 }
 
 class FormRegister {
-    fun clickJava(click: EventListenerJava) {
-    }
-
-    fun clickKotlin(click: EventListener) {
-    }
+    fun clickJava(click: EventListenerJava) {}
+    fun clickKotlin(click: EventListener) {}
 }
 
 class Main {
@@ -41,7 +38,7 @@ class Main {
         // Não pode ser convertido pra lambda
         FormRegister().clickKotlin(object : EventListener {
             override fun click() {
-                println("")
+                println("Somente inteface Java com um método pode ser convertido para lambda.")
             }
         })
     }
