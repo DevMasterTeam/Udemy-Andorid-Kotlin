@@ -5,15 +5,15 @@
     android:layout_height="match_parent"
     android:background="@color/purple"
     android:padding="16dp"
-    tools:context=".ui.SplashActivity">
+    tools:context=".ui.UserActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/cabin"
-        android:text="@string/vamos_comecar"
+        android:text="@string/lets_begin"
         android:textColor="@color/white"
         android:textSize="32sp" />
 
@@ -25,7 +25,7 @@
         android:layout_centerVertical="true"
         android:fontFamily="@font/cabin"
         android:gravity="center"
-        android:hint="@string/qual_seu_nome"
+        android:hint="@string/your_name"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -42,7 +42,7 @@
         android:fontFamily="@font/cabin"
         android:paddingStart="32dp"
         android:paddingEnd="32dp"
-        android:text="@string/salvar"
+        android:text="@string/save"
         android:textColor="@color/white" />
 
 </RelativeLayout>

@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Motivation</string>
-    <string name="nova_frase">Nova frase</string>
-    <string name="qual_seu_nome">Qual seu nome?</string>
-    <string name="usuario">Usuário</string>
-    <string name="frase">Frase</string>
-    <string name="salvar">Salvar</string>
-    <string name="vamos_comecar">Vamos começar?</string>
-    <string name="todas_as_frases">Todas as frases</string>
-    <string name="frases_de_motivacao">Frases de motivação</string>
-    <string name="frases_para_manha">Frases para manhã</string>
+    <string name="new_phrase">Nova frase</string>
+    <string name="your_name">Qual seu nome?</string>
+    <string name="user">Usuário</string>
+    <string name="phrase">Frase</string>
+    <string name="save">Salvar</string>
+    <string name="lets_begin">Vamos começar?</string>
+    <string name="phrases_all">Todas as frases</string>
+    <string name="motivation_phrases">Frases de motivação</string>
+    <string name="morning_phrases">Frases para manhã</string>
 
-    <string name="validacao_informe_nome">Informe seu nome.</string>
+    <string name="validation_mandatory_name">Informe seu nome.</string>
 </resources>

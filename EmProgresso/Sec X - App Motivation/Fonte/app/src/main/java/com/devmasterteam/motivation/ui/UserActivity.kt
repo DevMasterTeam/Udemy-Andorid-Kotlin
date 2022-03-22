@@ -6,19 +6,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.devmasterteam.motivation.R
-import com.devmasterteam.motivation.databinding.ActivitySplashBinding
+import com.devmasterteam.motivation.databinding.ActivityUserBinding
 import com.devmasterteam.motivation.infra.MotivationConstants
 import com.devmasterteam.motivation.infra.SecurityPreferences
 
-class SplashActivity : AppCompatActivity(), View.OnClickListener {
+class UserActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivitySplashBinding
+    private lateinit var binding: ActivityUserBinding
     private lateinit var mSecurityPreferences: SecurityPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivitySplashBinding.inflate(layoutInflater)
+        binding = ActivityUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.hide()
@@ -62,7 +62,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
         // Verifica se usuário preencheu o nome
         if (name == "") {
-            Toast.makeText(this, getString(R.string.validacao_informe_nome), Toast.LENGTH_LONG)
+            Toast.makeText(this, getString(R.string.validation_mandatory_name), Toast.LENGTH_LONG)
                 .show()
         } else {
             // Salva os dados do usuário e redireciona para as frases

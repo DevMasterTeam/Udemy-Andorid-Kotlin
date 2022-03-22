@@ -7,13 +7,13 @@ package com.devmasterteam.motivation.infra
 class MotivationConstants private constructor() {
 
     object KEY {
-        val PERSON_NAME = "personName"
+        const val PERSON_NAME = "personName"
     }
 
     object PHRASEFILTER {
-        val ALL = 0
-        val HAPPY = 1
-        val MORNING = 2
+        const val ALL = 0
+        const val HAPPY = 1
+        const val MORNING = 2
     }
 
 }

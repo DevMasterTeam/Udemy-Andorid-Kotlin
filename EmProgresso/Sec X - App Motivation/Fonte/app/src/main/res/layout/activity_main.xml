@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
-            android:contentDescription="@string/todas_as_frases"
+            android:contentDescription="@string/phrases_all"
             android:src="@drawable/ic_all" />
 
         <ImageView
@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
-            android:contentDescription="@string/frases_de_motivacao"
+            android:contentDescription="@string/motivation_phrases"
             android:src="@drawable/ic_happy" />
 
         <ImageView
@@ -37,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
-            android:contentDescription="@string/frases_para_manha"
+            android:contentDescription="@string/morning_phrases"
             android:src="@drawable/ic_sun" />
 
     </LinearLayout>
@@ -52,18 +52,17 @@
         android:fontFamily="@font/cabin"
         android:gravity="center"
         android:padding="8dp"
-        android:text="@string/usuario"
-        android:textColor="#0a0000"
+        android:text="@string/user"
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textPhrase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         android:fontFamily="@font/cabin"
-        android:text="@string/frase"
+        android:text="@string/phrase"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp" />
@@ -86,12 +85,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
-        android:elevation="5dp"
+        android:backgroundTint="@color/dark_purple"
         android:fontFamily="@font/cabin"
         android:paddingLeft="16dp"
-        android:backgroundTint="@color/dark_purple"
         android:paddingRight="16dp"
-        android:text="@string/nova_frase"
+        android:text="@string/new_phrase"
         android:textColor="@color/white" />
 
 </RelativeLayout>

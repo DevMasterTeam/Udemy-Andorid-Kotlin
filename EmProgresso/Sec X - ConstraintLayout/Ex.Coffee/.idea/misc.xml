@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Workspace DevMasterTeam/Udemy Andorid Kotlin/EmProgresso/Sec X - ConstraintLayout/Ex.Coffee/app/src/main/res/drawable/ic_arrow_back.xml" value="0.16" />
+        <entry key="..\:/Workspace DevMasterTeam/Udemy Andorid Kotlin/EmProgresso/Sec X - ConstraintLayout/Ex.Coffee/app/src/main/res/drawable/ic_chevron_right.xml" value="0.16" />
+        <entry key="..\:/Workspace DevMasterTeam/Udemy Andorid Kotlin/EmProgresso/Sec X - ConstraintLayout/Ex.Coffee/app/src/main/res/drawable/ic_clock.xml" value="0.16" />
+        <entry key="..\:/Workspace DevMasterTeam/Udemy Andorid Kotlin/EmProgresso/Sec X - ConstraintLayout/Ex.Coffee/app/src/main/res/drawable/ic_favorite.xml" value="0.16" />
+        <entry key="..\:/Workspace DevMasterTeam/Udemy Andorid Kotlin/EmProgresso/Sec X - ConstraintLayout/Ex.Coffee/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16" />
         <entry key="..\:/Workspace DevMasterTeam/Udemy Andorid Kotlin/EmProgresso/Sec X - ConstraintLayout/Ex.Coffee/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
       </map>
     </option>

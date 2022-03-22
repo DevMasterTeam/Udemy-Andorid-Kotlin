@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Motivation">
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.UserActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
