@@ -7,7 +7,7 @@
     tools:context=".ui.MainActivity">
 
     <LinearLayout
-        android:id="@+id/linearMenuFilter"
+        android:id="@+id/linear_menu"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_alignParentStart="true"
@@ -17,7 +17,7 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:id="@+id/imageAll"
+            android:id="@+id/image_all"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
@@ -25,28 +25,28 @@
             android:src="@drawable/ic_all" />
 
         <ImageView
-            android:id="@+id/imageHappy"
+            android:id="@+id/image_happy"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
-            android:contentDescription="@string/motivation_phrases"
+            android:contentDescription="@string/phrases_motivation"
             android:src="@drawable/ic_happy" />
 
         <ImageView
-            android:id="@+id/imageMorning"
+            android:id="@+id/image_sunny"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
-            android:contentDescription="@string/morning_phrases"
+            android:contentDescription="@string/phrases_morning"
             android:src="@drawable/ic_sun" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textUserName"
+        android:id="@+id/text_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearMenuFilter"
+        android:layout_below="@+id/linear_menu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/cabin"
@@ -57,7 +57,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/textPhrase"
+        android:id="@+id/text_phrase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -68,17 +68,16 @@
         android:textSize="20sp" />
 
     <View
-        android:id="@+id/viewSeparation"
         android:layout_width="128dp"
         android:layout_height="3dp"
-        android:layout_below="@id/textPhrase"
+        android:layout_below="@id/text_phrase"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:background="@color/dark_purple"
         android:elevation="5dp" />
 
     <Button
-        android:id="@+id/buttonRefresh"
+        android:id="@+id/button_new_phrase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

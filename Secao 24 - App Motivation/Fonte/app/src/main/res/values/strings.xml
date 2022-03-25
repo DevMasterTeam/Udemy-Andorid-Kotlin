@@ -7,8 +7,8 @@
     <string name="save">Salvar</string>
     <string name="lets_begin">Vamos começar?</string>
     <string name="phrases_all">Todas as frases</string>
-    <string name="motivation_phrases">Frases de motivação</string>
-    <string name="morning_phrases">Frases para manhã</string>
+    <string name="phrases_motivation">Frases de motivação</string>
+    <string name="phrases_morning">Frases para manhã</string>
 
     <string name="validation_mandatory_name">Informe seu nome.</string>
 </resources>

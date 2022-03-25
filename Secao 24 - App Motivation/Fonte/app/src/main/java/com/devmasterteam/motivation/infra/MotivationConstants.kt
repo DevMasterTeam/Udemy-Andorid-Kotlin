@@ -13,7 +13,7 @@ class MotivationConstants private constructor() {
     object PHRASEFILTER {
         const val ALL = 0
         const val HAPPY = 1
-        const val MORNING = 2
+        const val SUNNY = 2
     }
 
 }

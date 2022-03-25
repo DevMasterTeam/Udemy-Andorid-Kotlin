@@ -36,7 +36,7 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
      * */
     override fun onClick(view: View?) {
         val id: Int? = view?.id
-        if (id == R.id.buttonSave) {
+        if (id == R.id.button_save) {
             handleSave()
         }
     }

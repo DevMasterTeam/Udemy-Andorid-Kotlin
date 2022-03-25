@@ -18,11 +18,10 @@
         android:textSize="32sp" />
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         android:fontFamily="@font/cabin"
         android:gravity="center"
         android:hint="@string/your_name"
@@ -32,7 +31,7 @@
         android:textSize="25sp" />
 
     <Button
-        android:id="@+id/buttonSave"
+        android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
