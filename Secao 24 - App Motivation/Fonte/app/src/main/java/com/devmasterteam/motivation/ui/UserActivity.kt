@@ -13,7 +13,7 @@ import com.devmasterteam.motivation.infra.SecurityPreferences
 class UserActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityUserBinding
-    private lateinit var mSecurityPreferences: SecurityPreferences
+    private lateinit var securityPreferences: SecurityPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
 
         // Inicializa variáveis da classe
-        mSecurityPreferences = SecurityPreferences(this)
+        securityPreferences = SecurityPreferences(this)
 
         // Acesso aos elementos de interface)
         binding.buttonSave.setOnClickListener(this)
@@ -45,7 +45,7 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
      * Verifica se usuário já preencheu o nome
      * */
     private fun verifyUserName() {
-        val name = mSecurityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
+        val name = securityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
         if (name != "") {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -66,7 +66,7 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
                 .show()
         } else {
             // Salva os dados do usuário e redireciona para as frases
-            mSecurityPreferences.storeString(MotivationConstants.KEY.PERSON_NAME, name)
+            securityPreferences.storeString(MotivationConstants.KEY.PERSON_NAME, name)
             startActivity(Intent(this, MainActivity::class.java))
 
             // Impede que seja possível voltar a Activity

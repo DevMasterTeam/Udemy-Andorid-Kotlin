@@ -13,10 +13,10 @@ import com.devmasterteam.motivation.repository.Mock
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mSecurityPreferences: SecurityPreferences
+    private lateinit var securityPreferences: SecurityPreferences
 
     private var filter: Int = MotivationConstants.PHRASEFILTER.ALL
-    private val mMock: Mock = Mock()
+    private val mock: Mock = Mock()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +25,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         // Remove a supportActionBar
-        supportActionBar?.let {
-            it.hide()
-        }
+        supportActionBar?.hide()
 
         // Inicializa variáveis
-        mSecurityPreferences = SecurityPreferences(this)
+        securityPreferences = SecurityPreferences(this)
 
         // Adiciona eventos
         setListeners()
@@ -73,14 +71,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * Atualiza frase de motivação
      * */
     private fun refreshPhrase() {
-        binding.textPhrase.text = mMock.getPhrase(filter)
+        binding.textPhrase.text = mock.getPhrase(filter)
     }
 
     /**
      * Busca o nome do usuário
      * */
     private fun showUserName() {
-        val name = mSecurityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
+        val name = securityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
         binding.textUserName.text = "Olá, $name!"
     }
 
