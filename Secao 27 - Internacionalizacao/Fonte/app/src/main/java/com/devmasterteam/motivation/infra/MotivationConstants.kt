@@ -7,19 +7,19 @@ package com.devmasterteam.motivation.infra
 class MotivationConstants private constructor() {
 
     object KEY {
-        val PERSON_NAME = "personName"
+        const val PERSON_NAME = "personName"
     }
 
     object PHRASEFILTER {
-        val ALL = 0
-        val HAPPY = 1
-        val MORNING = 2
+        const val ALL = 0
+        const val HAPPY = 1
+        const val SUNNY = 2
     }
 
     object LANGUAGE {
-        val English = "en"
-        val Portuguese = "pt"
-        val French = "fr"
+        const val ENGLISH = "en"
+        const val PORTUGUESE = "pt"
+        const val FRENCH = "fr"
     }
 
 }

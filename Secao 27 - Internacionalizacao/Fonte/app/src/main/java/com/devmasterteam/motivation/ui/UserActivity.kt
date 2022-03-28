@@ -6,25 +6,25 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.devmasterteam.motivation.R
-import com.devmasterteam.motivation.databinding.ActivitySplashBinding
+import com.devmasterteam.motivation.databinding.ActivityUserBinding
 import com.devmasterteam.motivation.infra.MotivationConstants
 import com.devmasterteam.motivation.infra.SecurityPreferences
 
-class SplashActivity : AppCompatActivity(), View.OnClickListener {
+class UserActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivitySplashBinding
-    private lateinit var mSecurityPreferences: SecurityPreferences
+    private lateinit var binding: ActivityUserBinding
+    private lateinit var securityPreferences: SecurityPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivitySplashBinding.inflate(layoutInflater)
+        binding = ActivityUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.hide()
 
         // Inicializa variáveis da classe
-        mSecurityPreferences = SecurityPreferences(this)
+        securityPreferences = SecurityPreferences(this)
 
         // Acesso aos elementos de interface)
         binding.buttonSave.setOnClickListener(this)
@@ -36,7 +36,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
      * */
     override fun onClick(view: View?) {
         val id: Int? = view?.id
-        if (id == R.id.buttonSave) {
+        if (id == R.id.button_save) {
             handleSave()
         }
     }
@@ -45,7 +45,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
      * Verifica se usuário já preencheu o nome
      * */
     private fun verifyUserName() {
-        val name = mSecurityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
+        val name = securityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
         if (name != "") {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -62,11 +62,11 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
         // Verifica se usuário preencheu o nome
         if (name == "") {
-            Toast.makeText(this, getString(R.string.validacao_informe_nome), Toast.LENGTH_LONG)
+            Toast.makeText(this, getString(R.string.validation_mandatory_name), Toast.LENGTH_LONG)
                 .show()
         } else {
             // Salva os dados do usuário e redireciona para as frases
-            mSecurityPreferences.storeString(MotivationConstants.KEY.PERSON_NAME, name)
+            securityPreferences.storeString(MotivationConstants.KEY.PERSON_NAME, name)
             startActivity(Intent(this, MainActivity::class.java))
 
             // Impede que seja possível voltar a Activity
