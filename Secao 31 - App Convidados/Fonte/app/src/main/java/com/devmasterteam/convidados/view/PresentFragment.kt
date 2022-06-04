@@ -16,30 +16,22 @@ import com.devmasterteam.convidados.viewmodel.GuestsViewModel
 
 class PresentFragment : Fragment() {
 
-    private lateinit var mViewModel: GuestsViewModel
     private var _binding: FragmentPresentBinding? = null
-    private val mAdapter: GuestAdapter = GuestAdapter()
-    private lateinit var mListener: GuestListener
-
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    private lateinit var viewModel: GuestsViewModel
+    private val adapter = GuestAdapter()
 
-        // Instâncias da classe
-        mViewModel = ViewModelProvider(this).get(GuestsViewModel::class.java)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
+
+        viewModel = ViewModelProvider(this).get(GuestsViewModel::class.java)
         _binding = FragmentPresentBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        // RecyclerView
-        val recycler = binding.recyclerPresents
-        recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = mAdapter
+        binding.recyclerPresents.layoutManager = LinearLayoutManager(context)
+        binding.recyclerPresents.adapter = adapter
 
         // Listener
-        mListener = object : GuestListener {
+        val listener = object : GuestListener {
             override fun onClick(id: Int) {
                 val intent = Intent(context, GuestFormActivity::class.java)
 
@@ -51,21 +43,21 @@ class PresentFragment : Fragment() {
             }
 
             override fun onDelete(id: Int) {
-                mViewModel.delete(id)
-                mViewModel.load(GuestConstants.FILTER.PRESENT)
+                viewModel.delete(id)
+                viewModel.getPresent()
             }
         }
 
         // Cria os observadores
         observe()
 
-        mAdapter.attachListener(mListener)
-        return root
+        adapter.attachListener(listener)
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        mViewModel.load(GuestConstants.FILTER.PRESENT)
+        viewModel.getPresent()
     }
 
     override fun onDestroyView() {
@@ -74,8 +66,8 @@ class PresentFragment : Fragment() {
     }
 
     private fun observe() {
-        mViewModel.guestList.observe(viewLifecycleOwner, {
-            mAdapter.updateGuests(it)
-        })
+        viewModel.guestList.observe(viewLifecycleOwner) {
+            adapter.updateGuests(it)
+        }
     }
 }

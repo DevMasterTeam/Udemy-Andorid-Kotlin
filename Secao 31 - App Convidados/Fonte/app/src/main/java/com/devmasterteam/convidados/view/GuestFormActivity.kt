@@ -14,8 +14,8 @@ import com.devmasterteam.convidados.viewmodel.GuestFormViewModel
 
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var mViewModel: GuestFormViewModel
-    private var mGuestId: Int = 0
+    private lateinit var viewModel: GuestFormViewModel
+    private var guestId: Int = 0
     private lateinit var binding: ActivityGuestFormBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityGuestFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mViewModel = ViewModelProvider(this).get(GuestFormViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(GuestFormViewModel::class.java)
 
         // Eventos
         setListeners()
@@ -41,24 +41,23 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         val id = v.id
         if (id == R.id.button_save) {
-
             val name = binding.editName.text.toString()
             val presence = binding.radioPresence.isChecked
 
-            mViewModel.save(mGuestId, name, presence)
+            viewModel.save(guestId, name, presence)
         }
     }
 
     private fun loadData() {
         val bundle = intent.extras
         if (bundle != null) {
-            mGuestId = bundle.getInt(GuestConstants.GUEST.ID)
-            mViewModel.load(mGuestId)
+            guestId = bundle.getInt(GuestConstants.GUEST.ID)
+            viewModel.load(guestId)
         }
     }
 
     private fun observe() {
-        mViewModel.saveGuest.observe(this, Observer {
+        viewModel.saveGuest.observe(this, Observer {
             if (it) {
                 Toast.makeText(applicationContext, "Sucesso", Toast.LENGTH_SHORT).show()
             } else {
@@ -67,7 +66,7 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
             finish()
         })
 
-        mViewModel.guest.observe(this, Observer {
+        viewModel.guest.observe(this, Observer {
             binding.editName.setText(it.name)
             if (it.presence) {
                 binding.radioPresence.isChecked = true
