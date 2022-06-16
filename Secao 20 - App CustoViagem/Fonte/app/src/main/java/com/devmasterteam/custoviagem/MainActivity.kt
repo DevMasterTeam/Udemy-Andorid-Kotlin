@@ -23,11 +23,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Acesso aos elementos de interface via 'binding'
         binding.buttonCalculate.setOnClickListener(this)
 
-        binding.buttonCalculate.setOnClickListener(object : View.OnClickListener{
+        // Diferente maneira de responder ao click
+        /*binding.buttonCalculate.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
                 TODO("Not yet implemented")
             }
-        })
+        })*/
     }
 
     // Função responsável por tratar qualquer evento de click nos elementos
