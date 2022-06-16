@@ -1,11 +1,7 @@
 package com.devmasterteam.convidados.service.repository
 
-import android.content.ContentValues
 import android.content.Context
-import com.devmasterteam.convidados.service.constants.DataBaseConstants
 import com.devmasterteam.convidados.service.model.GuestModel
-import java.lang.Exception
-import java.util.ArrayList
 
 class GuestRepository (context: Context) {
 
