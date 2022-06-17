@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitClient {
+class RetrofitClient private constructor() {
     companion object {
 
         // Instância privada - Implementação singleton

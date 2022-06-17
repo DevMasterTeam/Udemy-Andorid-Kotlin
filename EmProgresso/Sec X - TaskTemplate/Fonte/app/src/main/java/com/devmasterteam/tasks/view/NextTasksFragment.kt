@@ -13,20 +13,18 @@ import com.devmasterteam.tasks.viewmodel.TaskListViewModel
 
 class NextTasksFragment : Fragment() {
 
-    private lateinit var galleryViewModel: TaskListViewModel
+    private lateinit var viewModel: TaskListViewModel
     private var _binding: FragmentNextTasksBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        galleryViewModel = ViewModelProvider(this).get(TaskListViewModel::class.java)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
+        viewModel = ViewModelProvider(this).get(TaskListViewModel::class.java)
 
         _binding = FragmentNextTasksBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
+        viewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

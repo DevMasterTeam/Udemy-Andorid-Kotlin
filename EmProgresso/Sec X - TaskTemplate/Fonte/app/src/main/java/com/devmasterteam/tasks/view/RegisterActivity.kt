@@ -12,14 +12,14 @@ import com.devmasterteam.tasks.viewmodel.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var mViewModel: RegisterViewModel
+    private lateinit var viewModel: RegisterViewModel
     private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Variáveis da classe
-        mViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
 
         // Eventos

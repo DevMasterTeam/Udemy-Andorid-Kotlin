@@ -9,14 +9,14 @@ import com.devmasterteam.tasks.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var mViewModel: LoginViewModel
+    private lateinit var viewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Variáveis da classe
-        mViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
         // Layout

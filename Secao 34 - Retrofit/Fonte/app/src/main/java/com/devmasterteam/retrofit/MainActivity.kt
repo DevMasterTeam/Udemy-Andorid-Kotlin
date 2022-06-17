@@ -15,17 +15,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val call: Call<List<PostModel>> = remote.list()
-        val lst = call.enqueue(object : Callback<List<PostModel>> {
+        call.enqueue(object : Callback<List<PostModel>> {
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
-                val falha = t.message
+                val fail = t.message
             }
 
-            override fun onResponse(
-                call: Call<List<PostModel>>, response: Response<List<PostModel>>
-            ) {
-                val count = response.body()?.count()
+            override fun onResponse(call: Call<List<PostModel>>, rsp: Response<List<PostModel>>) {
+                val list = rsp.body()
             }
-
         })
 
     }

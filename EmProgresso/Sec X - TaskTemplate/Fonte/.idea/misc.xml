@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Workspace DevMasterTeam GitHub/Udemy Andorid Kotlin/EmProgresso/Sec X - TaskTemplate/Fonte/app/src/main/res/layout/fragment_all_tasks.xml" value="0.25025641025641027" />
+        <entry key="..\:/Workspace DevMasterTeam GitHub/Udemy Andorid Kotlin/EmProgresso/Sec X - TaskTemplate/Fonte/app/src/main/res/layout/fragment_expired_tasks.xml" value="0.25416666666666665" />
+        <entry key="..\:/Workspace DevMasterTeam GitHub/Udemy Andorid Kotlin/EmProgresso/Sec X - TaskTemplate/Fonte/app/src/main/res/layout/row_task_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Workspace DevMasterTeam/Udemy Andorid Kotlin/EmProgresso/Sec X - TaskTemplate/Fonte/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Workspace/2022 Android Kotlin/Sec X - TaskTemplate/Fonte/app/src/main/res/drawable/ic_all.xml" value="0.2703125" />
         <entry key="..\:/Workspace/2022 Android Kotlin/Sec X - TaskTemplate/Fonte/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2703125" />

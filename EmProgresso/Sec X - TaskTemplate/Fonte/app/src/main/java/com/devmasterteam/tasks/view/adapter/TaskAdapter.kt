@@ -10,25 +10,25 @@ import com.devmasterteam.tasks.view.viewholder.TaskViewHolder
 
 class TaskAdapter : RecyclerView.Adapter<TaskViewHolder>() {
 
-    private var mList: List<TaskModel> = arrayListOf()
-    private lateinit var mListener: TaskListener
+    private var listTasks: List<TaskModel> = arrayListOf()
+    private lateinit var listener: TaskListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val itemBinding = RowTaskListBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
-        return TaskViewHolder(itemBinding, mListener)
+        return TaskViewHolder(itemBinding, listener)
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        holder.bindData(mList[position])
+        holder.bindData(listTasks[position])
     }
 
     override fun getItemCount(): Int {
-        return mList.count()
+        return listTasks.count()
     }
 
-    fun attachListener(listener: TaskListener) {
-        mListener = listener
+    fun attachListener(taskListener: TaskListener) {
+        listener = taskListener
     }
 
 }

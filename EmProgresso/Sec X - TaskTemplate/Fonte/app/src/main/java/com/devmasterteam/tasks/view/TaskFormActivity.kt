@@ -12,14 +12,14 @@ import com.devmasterteam.tasks.viewmodel.TaskFormViewModel
 
 class TaskFormActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var mViewModel: TaskFormViewModel
+    private lateinit var viewModel: TaskFormViewModel
     private lateinit var binding: ActivityTaskFormBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Variáveis da classe
-        mViewModel = ViewModelProvider(this).get(TaskFormViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(TaskFormViewModel::class.java)
         binding = ActivityTaskFormBinding.inflate(layoutInflater)
 
         // Eventos
