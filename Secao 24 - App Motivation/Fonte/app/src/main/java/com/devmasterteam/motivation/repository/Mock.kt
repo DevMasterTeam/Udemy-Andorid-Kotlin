@@ -11,7 +11,7 @@ class Mock {
     private val happy = MotivationConstants.PHRASEFILTER.HAPPY
     private val sunny = MotivationConstants.PHRASEFILTER.SUNNY
  
-    private val mListPhrases: List<Phrase> = listOf(
+    private val listPhrases: List<Phrase> = listOf(
         Phrase("Não sabendo que era impossível, foi lá e fez.", happy),
         Phrase("Você não é derrotado quando perde, você é derrotado quando desiste!", happy),
         Phrase("Quando está mais escuro, vemos mais estrelas!", happy),
@@ -29,7 +29,7 @@ class Mock {
 
     // Obtém frase aleatória de acordo com o filtro
     fun getPhrase(value: Int): String {
-        val filtered = mListPhrases.filter { (it.category == value || value == all) }
+        val filtered = listPhrases.filter { (it.category == value || value == all) }
 
         // Número aleatório de 0 ao tamanho da lista retornada do filtro
         val rand = Random.nextInt(filtered.size)

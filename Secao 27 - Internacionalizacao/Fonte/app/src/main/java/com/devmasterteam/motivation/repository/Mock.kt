@@ -14,7 +14,7 @@ class Mock {
     private val langPt = MotivationConstants.LANGUAGE.PORTUGUESE
     private val langFr = MotivationConstants.LANGUAGE.FRENCH
 
-    private val mListPhrases: List<Phrase> = listOf(
+    private val listPhrases: List<Phrase> = listOf(
         Phrase("Não sabendo que era impossível, foi lá e fez.", happy, langPt),
         Phrase(
             "Você não é derrotado quando perde, você é derrotado quando desiste!",
@@ -113,7 +113,7 @@ class Mock {
             langFilter = langPt
         }
 
-        val filtered = mListPhrases.filter {
+        val filtered = listPhrases.filter {
             (it.category == value || value == all) && (it.language == langFilter)
         }
 
