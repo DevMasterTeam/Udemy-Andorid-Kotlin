@@ -13,14 +13,14 @@ import com.devmasterteam.tasks.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var mViewModel: LoginViewModel
+    private lateinit var viewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Variáveis da classe
-        mViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
         // Layout
@@ -48,14 +48,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
      * Verifica se usuário está logado
      */
     private fun verifyLoggedUser() {
-        mViewModel.verifyLoggedUser()
+        viewModel.verifyLoggedUser()
     }
 
     /**
      * Observa ViewModel
      */
     private fun observe() {
-        mViewModel.login.observe(this, Observer {
+        viewModel.login.observe(this, Observer {
             if (it.success()) {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
 
-        mViewModel.loggedUser.observe(this, Observer {
+        viewModel.loggedUser.observe(this, Observer {
             if (it) {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
@@ -79,6 +79,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val email = binding.editEmail.text.toString()
         val password = binding.editPassword.text.toString()
 
-        mViewModel.doLogin(email, password)
+        viewModel.doLogin(email, password)
     }
 }

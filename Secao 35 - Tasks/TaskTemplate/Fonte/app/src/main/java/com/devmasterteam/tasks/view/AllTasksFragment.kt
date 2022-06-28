@@ -19,20 +19,22 @@ class AllTasksFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
         viewModel = ViewModelProvider(this).get(TaskListViewModel::class.java)
-
         _binding = FragmentAllTasksBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        viewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val recycler = binding.recyclerAllTasks
 
-        return root
+        // Cria os observadores
+        observe()
+
+        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun observe() {
+
     }
 }
