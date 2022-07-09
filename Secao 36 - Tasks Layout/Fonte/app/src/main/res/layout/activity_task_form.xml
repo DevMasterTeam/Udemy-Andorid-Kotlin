@@ -20,7 +20,6 @@
     <View
         android:id="@+id/view_description"
         style="@style/ViewDivider"
-        android:layout_width="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_description" />
@@ -47,7 +46,6 @@
     <View
         android:id="@+id/view_complete"
         style="@style/ViewDivider"
-        android:layout_width="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_priority" />
@@ -66,7 +64,6 @@
     <View
         android:id="@+id/view_date"
         style="@style/ViewDivider"
-        android:layout_width="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check_complete" />
@@ -85,7 +82,6 @@
         android:id="@+id/button_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:gravity="center"
         android:hint="@string/clique_para_selecionar_a_data"
