@@ -7,7 +7,7 @@ import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK
 
 class FingerprintHelper {
     companion object {
-        fun isAuthenticationAvailable(context: Context): Boolean {
+        fun isBiometricAvailable(context: Context): Boolean {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                 return false
             }

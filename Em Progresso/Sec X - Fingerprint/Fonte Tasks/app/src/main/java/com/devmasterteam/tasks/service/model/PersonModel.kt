@@ -2,7 +2,7 @@ package com.devmasterteam.tasks.service.model
 
 import com.google.gson.annotations.SerializedName
 
-class HeaderModel {
+class PersonModel {
 
     @SerializedName("token")
     lateinit var token: String

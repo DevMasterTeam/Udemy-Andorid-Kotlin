@@ -7,161 +7,147 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.devmasterteam.tasks.R
+import com.devmasterteam.tasks.databinding.ActivityRegisterBinding
 import com.devmasterteam.tasks.databinding.ActivityTaskFormBinding
 import com.devmasterteam.tasks.service.constants.TaskConstants
+import com.devmasterteam.tasks.service.model.PriorityModel
 import com.devmasterteam.tasks.service.model.TaskModel
+import com.devmasterteam.tasks.viewmodel.RegisterViewModel
 import com.devmasterteam.tasks.viewmodel.TaskFormViewModel
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
-class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
+class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
+    DatePickerDialog.OnDateSetListener {
 
-    private lateinit var mViewModel: TaskFormViewModel
+    private lateinit var viewModel: TaskFormViewModel
     private lateinit var binding: ActivityTaskFormBinding
-    private val mPriorityListId: MutableList<Int> = arrayListOf()
-    private val mDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-    private var mTaskId = 0
+    private val dateFormat = SimpleDateFormat("dd/MM/yyyy")
+    private var listPriority: List<PriorityModel> = mutableListOf()
+    private var taskIdentification = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Variáveis da classe
-        mViewModel = ViewModelProvider(this).get(TaskFormViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(TaskFormViewModel::class.java)
         binding = ActivityTaskFormBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         // Eventos
         binding.buttonSave.setOnClickListener(this)
         binding.buttonDate.setOnClickListener(this)
 
-        // Observadores
+        viewModel.loadPriorities()
+
+        loadDataFromActivity()
+
         observe()
 
-        // Carrega dados passados para a activity
-        loadDataFromActivity()
-        mViewModel.loadPriorities()
-    }
-
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        val calendar = Calendar.getInstance()
-        calendar.set(year, month, dayOfMonth)
-
-        val strDate: String = mDateFormat.format(calendar.time)
-        binding.buttonDate.text = strDate
+        // Layout
+        setContentView(binding.root)
     }
 
     override fun onClick(v: View) {
-        val id = v.id
-        if (id == R.id.button_date) {
-            showDateDialog()
-        } else if (id == R.id.button_save) {
+        if (v.id == R.id.button_date) {
+            handleDate()
+        } else if (v.id == R.id.button_save) {
             handleSave()
         }
     }
 
-    private fun observe() {
-        // Carregamento de tarefa
-        mViewModel.task.observe(this, Observer {
+    override fun onDateSet(v: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
+        val calendar = Calendar.getInstance()
+        calendar.set(year, month, dayOfMonth)
 
-            // Caso ocorra algum erro no carregamento
-            if (it == null) {
-                toast(applicationContext.getString(R.string.ERROR_LOAD_TASK))
-                finish()
-            } else {
-                binding.editDescription.setText(it.description)
-                binding.checkComplete.isChecked = it.complete
-                binding.spinnerPriority.setSelection(getIndex(it.priorityId))
-
-                val date = SimpleDateFormat("yyyy-MM-dd").parse(it.dueDate)
-                binding.buttonDate.text = mDateFormat.format(date)
-            }
-        })
-
-        mViewModel.priorityList.observe(this, Observer {
-            val list: MutableList<String> = ArrayList()
-            for (p in it) {
-                list.add(p.description)
-                mPriorityListId.add(p.id)
-            }
-
-            // Cria adapter e usa no elemento
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
-            binding.spinnerPriority.adapter = adapter
-        })
-
-        mViewModel.validation.observe(this, Observer {
-            if (it.success()) {
-                if (mTaskId == 0) {
-                    toast(applicationContext.getString(R.string.task_created))
-                } else {
-                    toast(applicationContext.getString(R.string.task_updated))
-                }
-                finish()
-            } else {
-                toast(it.failure())
-            }
-        })
+        val dueDate = dateFormat.format(calendar.time)
+        binding.buttonDate.text = dueDate
     }
 
-    /**
-     * Obtém o indexo do valor carregado
-     */
+    private fun loadDataFromActivity() {
+        val bundle = intent.extras
+        if (bundle != null) {
+            taskIdentification = bundle.getInt(TaskConstants.BUNDLE.TASKID)
+            viewModel.load(taskIdentification)
+        }
+    }
+
     private fun getIndex(priorityId: Int): Int {
         var index = 0
-        for (i in 0 until mPriorityListId.count()) {
-            if (mPriorityListId[i] == priorityId) {
-                index = i
+        for (l in listPriority) {
+            if (l.id == priorityId) {
                 break
             }
+            index++
         }
         return index
     }
 
-    private fun loadDataFromActivity() {
-        val bundle = intent.extras;
-        if (bundle != null) {
-            mTaskId = bundle.getInt(TaskConstants.BUNDLE.TASKID, 0)
+    private fun observe() {
+        viewModel.priorityList.observe(this) {
+            listPriority = it
+            val list = mutableListOf<String>()
+            for (p in it) {
+                list.add(p.description)
+            }
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
+            binding.spinnerPriority.adapter = adapter
+        }
 
-            // Carrega tarefa
-            if (this.mTaskId != 0) {
-                binding.buttonSave.setText(R.string.update_task)
-                mViewModel.load(mTaskId)
+        viewModel.taskSave.observe(this) {
+            if (it.status()) {
+                if (taskIdentification == 0) {
+                    toast(getString(R.string.task_created))
+                } else {
+                    toast(getString(R.string.task_updated))
+                }
+                finish()
+            } else {
+                toast(it.message())
+            }
+        }
+
+        viewModel.task.observe(this) {
+            binding.editDescription.setText(it.description)
+            binding.checkComplete.isChecked = it.complete
+            binding.spinnerPriority.setSelection(getIndex(it.priorityId))
+
+            val date = SimpleDateFormat("yyyy-MM-dd").parse(it.dueDate)
+            binding.buttonDate.text = SimpleDateFormat("dd/MM/yyyy").format(date)
+        }
+
+        viewModel.taskLoad.observe(this) {
+            if (!it.status()) {
+                toast(it.message())
+                finish()
             }
         }
     }
 
-    /**
-     * Trata click
-     */
+    private fun toast(str: String) {
+        Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
+    }
+
     private fun handleSave() {
         val task = TaskModel().apply {
-            this.id = mTaskId
+            this.id = taskIdentification
             this.description = binding.editDescription.text.toString()
             this.complete = binding.checkComplete.isChecked
             this.dueDate = binding.buttonDate.text.toString()
-            this.priorityId = mPriorityListId[binding.spinnerPriority.selectedItemPosition]
+
+            val index = binding.spinnerPriority.selectedItemPosition
+            this.priorityId = listPriority[index].id
         }
 
-        // Envia informação para ViewModel
-        mViewModel.save(task)
+        viewModel.save(task)
     }
 
-    /**
-     * Mostra datepicker de seleção
-     */
-    private fun showDateDialog() {
-        val c: Calendar = Calendar.getInstance()
-        val year: Int = c.get(Calendar.YEAR)
-        val month: Int = c.get(Calendar.MONTH)
-        val day: Int = c.get(Calendar.DAY_OF_MONTH)
+    private fun handleDate() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
         DatePickerDialog(this, this, year, month, day).show()
-    }
-
-    private fun toast(str: String) {
-        Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
     }
 }

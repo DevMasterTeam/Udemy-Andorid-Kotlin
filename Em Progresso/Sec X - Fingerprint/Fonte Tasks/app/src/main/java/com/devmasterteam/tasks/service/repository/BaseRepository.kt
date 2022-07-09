@@ -4,48 +4,65 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import com.devmasterteam.tasks.R
 import com.devmasterteam.tasks.service.constants.TaskConstants
+import com.devmasterteam.tasks.service.listener.APIListener
 import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-open class BaseRepository(context: Context) {
+open class BaseRepository(val context: Context) {
 
-    val mContext: Context = context
+    private fun failResponse(str: String): String {
+        return Gson().fromJson(str, String::class.java)
+    }
 
-    fun fail(code: Int) = code != TaskConstants.HTTP.SUCCESS
+    fun <T> executeCall(call: Call<T>, listener: APIListener<T>) {
+        call.enqueue(object : Callback<T> {
+            override fun onResponse(call: Call<T>, response: Response<T>) {
+                if (response.code() == TaskConstants.HTTP.SUCCESS) {
+                    response.body()?.let { listener.onSuccess(it) }
+                } else {
+                    listener.onFailure(failResponse(response.errorBody()!!.string()))
+                }
+            }
 
-    fun failRespose(respose: String): String {
-        return Gson().fromJson(respose, String::class.java)
+            override fun onFailure(call: Call<T>, t: Throwable) {
+                listener.onFailure(context.getString(R.string.ERROR_UNEXPECTED))
+            }
+        })
     }
 
     /**
      * Verifica se existe conexão com internet
      */
-    fun isConnectionAvailable(context: Context): Boolean {
+    fun isConnectionAvailable(): Boolean {
         var result = false
+
+        // Gerenciador de conexão
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        // Verifica versão do sistema rodando a aplicação
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val networkCapabilities = cm.activeNetwork ?: return false
-            val actNw = cm.getNetworkCapabilities(networkCapabilities) ?: return false
+            val activeNet = cm.activeNetwork ?: return false
+            val netWorkCapabilities = cm.getNetworkCapabilities(activeNet) ?: return false
             result = when {
-                actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                netWorkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                netWorkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
                 else -> false
             }
         } else {
-            cm.run {
-                cm.activeNetworkInfo?.run {
-                    result = when (type) {
-                        ConnectivityManager.TYPE_WIFI -> true
-                        ConnectivityManager.TYPE_MOBILE -> true
-                        ConnectivityManager.TYPE_ETHERNET -> true
-                        else -> false
-                    }
-
+            if (cm.activeNetworkInfo != null) {
+                result = when (cm.activeNetworkInfo!!.type) {
+                    ConnectivityManager.TYPE_WIFI -> true
+                    ConnectivityManager.TYPE_MOBILE -> true
+                    ConnectivityManager.TYPE_ETHERNET -> true
+                    else -> false
                 }
             }
         }
 
         return result
     }
-
 }

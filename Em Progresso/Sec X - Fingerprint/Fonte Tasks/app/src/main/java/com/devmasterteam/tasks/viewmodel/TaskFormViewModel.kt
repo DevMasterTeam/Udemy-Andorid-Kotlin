@@ -5,67 +5,60 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.devmasterteam.tasks.service.listener.APIListener
-import com.devmasterteam.tasks.service.listener.ValidationListener
 import com.devmasterteam.tasks.service.model.PriorityModel
 import com.devmasterteam.tasks.service.model.TaskModel
+import com.devmasterteam.tasks.service.model.ValidationModel
 import com.devmasterteam.tasks.service.repository.PriorityRepository
 import com.devmasterteam.tasks.service.repository.TaskRepository
 
 class TaskFormViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val mTaskRepository = TaskRepository(application)
-    private val mPriorityRepository = PriorityRepository(application)
+    private val priorityRepository = PriorityRepository(application.applicationContext)
+    private val taskRepository = TaskRepository(application.applicationContext)
 
-    private val mTask = MutableLiveData<TaskModel>()
-    val task: LiveData<TaskModel> = mTask
+    private val _priorityList = MutableLiveData<List<PriorityModel>>()
+    val priorityList: LiveData<List<PriorityModel>> = _priorityList
 
-    private val mPriorityList = MutableLiveData<List<PriorityModel>>()
-    val priorityList: LiveData<List<PriorityModel>> = mPriorityList
+    private val _taskSave = MutableLiveData<ValidationModel>()
+    val taskSave: LiveData<ValidationModel> = _taskSave
 
-    private val mValidation = MutableLiveData<ValidationListener>()
-    val validation: LiveData<ValidationListener> = mValidation
+    private val _task = MutableLiveData<TaskModel>()
+    val task: LiveData<TaskModel> = _task
 
-    /**
-     * Carregamente de uma tarefas
-     */
-    fun load(taskId: Int) {
-        mTaskRepository.load(taskId, object : APIListener<TaskModel> {
-            override fun onSuccess(result: TaskModel, statusCode: Int) {
-                mTask.value = result
+    private val _taskLoad = MutableLiveData<ValidationModel>()
+    val taskLoad: LiveData<ValidationModel> = _taskLoad
+
+    fun save(task: TaskModel) {
+        val listener = object : APIListener<Boolean>{
+            override fun onSuccess(result: Boolean) {
+                _taskSave.value = ValidationModel()
+            }
+
+            override fun onFailure(message: String) {
+                _taskSave.value = ValidationModel(message)
+            }
+        }
+
+        if (task.id == 0) {
+            taskRepository.create(task, listener)
+        } else {
+            taskRepository.update(task, listener)
+        }
+    }
+
+    fun load(id: Int) {
+        taskRepository.load(id, object : APIListener<TaskModel> {
+            override fun onSuccess(result: TaskModel) {
+                _task.value = result
             }
             override fun onFailure(message: String) {
-                mTask.value = null
-                mValidation.value = ValidationListener(message)
+                _taskLoad.value = ValidationModel(message)
             }
-
         })
     }
 
     fun loadPriorities() {
-        mPriorityList.value = mPriorityRepository.list()
-    }
-
-    fun save(task: TaskModel) {
-        if (task.id == 0) {
-            mTaskRepository.create(task, object : APIListener<Boolean> {
-                override fun onSuccess(result: Boolean, statusCode: Int) {
-                    mValidation.value = ValidationListener()
-                }
-                override fun onFailure(message: String) {
-                    mValidation.value = ValidationListener(message)
-                }
-
-            })
-        } else {
-            mTaskRepository.update(task, object : APIListener<Boolean> {
-                override fun onSuccess(result: Boolean, statusCode: Int) {
-                    mValidation.value = ValidationListener()
-                }
-                override fun onFailure(message: String) {
-                    mValidation.value = ValidationListener(message)
-                }
-            })
-        }
+        _priorityList.value = priorityRepository.list()
     }
 
 }

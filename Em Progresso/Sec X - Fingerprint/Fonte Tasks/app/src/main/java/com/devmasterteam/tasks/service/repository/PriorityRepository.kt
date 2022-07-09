@@ -7,51 +7,52 @@ import com.devmasterteam.tasks.service.model.PriorityModel
 import com.devmasterteam.tasks.service.repository.local.TaskDatabase
 import com.devmasterteam.tasks.service.repository.remote.PriorityService
 import com.devmasterteam.tasks.service.repository.remote.RetrofitClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class PriorityRepository(context: Context) : BaseRepository(context) {
 
-    private val mRemote = RetrofitClient.createService(PriorityService::class.java)
-    private val mDatabase = TaskDatabase.getDatabase(context).priorityDAO()
+    private val remote = RetrofitClient.getService(PriorityService::class.java)
+    private val database = TaskDatabase.getDatabase(context).priorityDAO()
 
-    fun all(listener: APIListener<List<PriorityModel>>) {
+    companion object {
+        private val cache = mutableMapOf<Int, String>()
+        fun getDescription(id: Int): String {
+            return cache[id] ?: ""
+        }
+        fun setDescription(id: Int, str: String) {
+            cache[id] = str
+        }
+    }
 
-        // Verificação de internet
-        if (!isConnectionAvailable(mContext)) {
-            listener.onFailure("Dispositivo sem conexão. Conecte-se com à internet.")
+    /**
+     * Obtém a descrição da tarefa, sempre buscando no cache antes do banco de dados
+     * */
+    fun getDescription(id: Int): String {
+        val cached = PriorityRepository.getDescription(id)
+        return if (cached == "") {
+            val description = database.getDescription(id)
+            PriorityRepository.setDescription(id, description)
+            description
+        } else {
+            cached
+        }
+    }
+
+    fun list(listener: APIListener<List<PriorityModel>>) {
+        if (!isConnectionAvailable()) {
+            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
             return
         }
 
-        val call: Call<List<PriorityModel>> = mRemote.all()
-        call.enqueue(object : Callback<List<PriorityModel>> {
-            override fun onFailure(call: Call<List<PriorityModel>>, t: Throwable) {
-                listener.onFailure(mContext.getString(R.string.ERROR_UNEXPECTED))
-            }
-
-            override fun onResponse(
-                call: Call<List<PriorityModel>>,
-                response: Response<List<PriorityModel>>
-            ) {
-                val code = response.code()
-                if (fail(code)) {
-                    listener.onFailure(failRespose(response.errorBody()!!.string()))
-                } else {
-                    response.body()?.let { listener.onSuccess(it, response.code()) }
-                }
-            }
-
-        })
+        executeCall(remote.list(), listener)
     }
 
-    fun list() = mDatabase.list()
+    fun list(): List<PriorityModel> {
+        return database.list()
+    }
 
     fun save(list: List<PriorityModel>) {
-        mDatabase.clear()
-        mDatabase.save(list)
+        database.clear()
+        database.save(list)
     }
-
-    fun getDescription(id: Int) = mDatabase.getDescription(id)
 
 }

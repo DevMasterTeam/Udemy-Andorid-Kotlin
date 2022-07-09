@@ -17,37 +17,33 @@
     <style name="Theme.Tasks.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
     <style name="Theme.Tasks.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Tasks.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="WhiteEditText" parent="@android:style/TextAppearance">
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:textColorHint">#ffffff</item>
-        <item name="android:color">#ffffff</item>
-        <item name="android:backgroundTint">#ffffff</item>
-    </style>
-
-    <style name="DefaultButton" parent="@android:style/TextAppearance">
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:paddingStart">70dp</item>
-        <item name="android:paddingEnd">70dp</item>
+    <style name="DefaultButton">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingStart">64dp</item>
+        <item name="android:paddingEnd">64dp</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:layout_gravity">center</item>
-        <item name="backgroundTint">@color/colorAccent</item>
-        <item name="cornerRadius">8dp</item>
+        <item name="android:backgroundTint">@color/pink</item>
     </style>
 
-    <style name="ViewElementsDivider">
+    <style name="WhiteEditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="ViewDivider">
         <item name="android:layout_marginTop">16dp</item>
-        <item name="android:layout_height">2dp</item>
-        <item name="android:background">#ececec</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">@color/grey_500</item>
+        <item name="android:layout_height">1dp</item>
     </style>
 
 </resources>

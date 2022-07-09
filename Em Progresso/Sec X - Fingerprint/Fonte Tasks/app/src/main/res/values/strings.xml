@@ -9,6 +9,8 @@
     <string name="task_created">Tarefa criada com sucesso!</string>
     <string name="task_removed">Tarefa removida com sucesso!</string>
 
+    <string name="autenticacao_biometrica">Autenticação biométrica</string>
+
     <string name="email">E-mail</string>
     <string name="senha">Senha</string>
     <string name="login">Login</string>
@@ -16,7 +18,7 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="descricao">Descrição</string>
     <string name="prioridade">Prioridade</string>
-    <string name="data_limite">Data Limite</string>
+    <string name="data_limite">Data limite</string>
     <string name="update_task">Atualizar tarefa</string>
     <string name="clique_para_selecionar_a_data">Clique para selecionar a data limite</string>
     <string name="completa">Completa</string>
@@ -32,8 +34,5 @@
     <string name="expiradas">Expiradas</string>
     <string name="todas_tarefas">Tarefas</string>
     <string name="proximos_7_dias">Próximos 7 dias</string>
-
-    <string name="fp_titulo">Autenticação biométrica</string>
-    <string name="fp_cancelar">Cancelar</string>
 
 </resources>

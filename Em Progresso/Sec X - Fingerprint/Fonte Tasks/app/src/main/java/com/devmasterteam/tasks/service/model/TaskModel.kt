@@ -11,12 +11,14 @@ class TaskModel {
     var priorityId: Int = 0
 
     @SerializedName("Description")
-    lateinit var description: String
+    var description: String = ""
 
     @SerializedName("DueDate")
-    lateinit var dueDate: String
+    var dueDate: String = ""
 
     @SerializedName("Complete")
     var complete: Boolean = false
+
+    var priorityDescription: String = ""
 
 }

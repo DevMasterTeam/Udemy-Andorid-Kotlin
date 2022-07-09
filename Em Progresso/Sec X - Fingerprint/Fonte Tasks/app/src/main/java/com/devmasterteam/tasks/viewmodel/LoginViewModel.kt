@@ -7,84 +7,74 @@ import androidx.lifecycle.MutableLiveData
 import com.devmasterteam.tasks.service.constants.TaskConstants
 import com.devmasterteam.tasks.service.helper.FingerprintHelper
 import com.devmasterteam.tasks.service.listener.APIListener
-import com.devmasterteam.tasks.service.listener.ValidationListener
-import com.devmasterteam.tasks.service.model.HeaderModel
+import com.devmasterteam.tasks.service.model.PersonModel
 import com.devmasterteam.tasks.service.model.PriorityModel
+import com.devmasterteam.tasks.service.model.ValidationModel
 import com.devmasterteam.tasks.service.repository.PersonRepository
 import com.devmasterteam.tasks.service.repository.PriorityRepository
-import com.devmasterteam.tasks.service.repository.local.SecurityPreferences
+import com.devmasterteam.tasks.service.repository.SecurityPreferences
 import com.devmasterteam.tasks.service.repository.remote.RetrofitClient
+import kotlin.math.log
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    // Acesso a dados
-    private val mSecurityPreferences = SecurityPreferences(application)
-    private val mPersonRepository = PersonRepository(application)
-    private val mPriorityRepository = PriorityRepository(application)
+    private val personRepository = PersonRepository(application.applicationContext)
+    private val priorityRepository = PriorityRepository(application.applicationContext)
+    private val securityPreferences = SecurityPreferences(application.applicationContext)
 
-    // Login usando API
-    private val mLogin = MutableLiveData<ValidationListener>()
-    val login: LiveData<ValidationListener> = mLogin
+    private val _login = MutableLiveData<ValidationModel>()
+    val login: LiveData<ValidationModel> = _login
 
-    // Login usando SharedPreferences
-    private val mFingerprint = MutableLiveData<Boolean>()
-    val fingerprint: LiveData<Boolean> = mFingerprint
+    private val _biometrics = MutableLiveData<Boolean>()
+    val biometrics: LiveData<Boolean> = _biometrics
 
     /**
      * Faz login usando API
      */
     fun doLogin(email: String, password: String) {
-        mPersonRepository.login(email, password, object : APIListener<HeaderModel> {
-            override fun onSuccess(result: HeaderModel, statusCode: Int) {
-                // Salvar dados do usuário no SharePreferences
-                mSecurityPreferences.store(TaskConstants.SHARED.PERSON_KEY, result.personKey)
-                mSecurityPreferences.store(TaskConstants.SHARED.TOKEN_KEY, result.token)
-                mSecurityPreferences.store(TaskConstants.SHARED.PERSON_NAME, result.name)
+        personRepository.login(email, password, object : APIListener<PersonModel> {
+            override fun onSuccess(result: PersonModel) {
+                securityPreferences.store(TaskConstants.SHARED.TOKEN_KEY, result.token)
+                securityPreferences.store(TaskConstants.SHARED.PERSON_KEY, result.personKey)
+                securityPreferences.store(TaskConstants.SHARED.PERSON_NAME, result.name)
 
-                // Atualiza valores de Header para requisições
-                RetrofitClient.addHeaders(result.personKey, result.token)
+                RetrofitClient.addHeaders(result.token, result.personKey)
 
-                // Informa sucesso
-                mLogin.value = ValidationListener()
+                _login.value = ValidationModel()
             }
 
             override fun onFailure(message: String) {
-                mLogin.value = ValidationListener(message)
+                _login.value = ValidationModel(message)
             }
         })
     }
 
     /**
-     * Verifica se usuário está logado
+     * Verifica se usuário está logado e
      */
-    fun isAuthenticationAvailable() {
-        val personKey = mSecurityPreferences.get(TaskConstants.SHARED.PERSON_KEY)
-        val tokenKey = mSecurityPreferences.get(TaskConstants.SHARED.TOKEN_KEY)
+    fun verifyAuthentication() {
+        val token = securityPreferences.get(TaskConstants.SHARED.TOKEN_KEY)
+        val person = securityPreferences.get(TaskConstants.SHARED.PERSON_KEY)
+
+        RetrofitClient.addHeaders(token, person)
 
         // Se token e person key forem diferentes de vazio, usuário está logado
-        val logged = (tokenKey != "" && personKey != "")
-
-        // Atualiza valores de Header para requisições
-        RetrofitClient.addHeaders(personKey, tokenKey)
+        val logged = (token != "" && person != "")
 
         // Se usuário não estiver logado, aplicação vai atualizar os dados
         if (!logged) {
-            mPriorityRepository.all(object : APIListener<List<PriorityModel>> {
-                override fun onSuccess(result: List<PriorityModel>, statusCode: Int) {
-                    mPriorityRepository.save(result)
+            priorityRepository.list(object : APIListener<List<PriorityModel>> {
+                override fun onSuccess(result: List<PriorityModel>) {
+                    priorityRepository.save(result)
                 }
 
-                // Erro silencioso
                 override fun onFailure(message: String) {
                 }
-
             })
         }
 
-        // Se possui autenticação biométrica E usuário já fez login anteriormente
-        if (FingerprintHelper.isAuthenticationAvailable(getApplication()) && logged) {
-            mFingerprint.value = true
-        }
+        // Usuário está logado E possui autenticação biométrica
+        _biometrics.value = logged && FingerprintHelper.isBiometricAvailable(getApplication())
     }
 
 }

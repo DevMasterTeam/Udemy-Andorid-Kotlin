@@ -15,6 +15,6 @@ class PriorityModel {
 
     @SerializedName("Description")
     @ColumnInfo(name = "description")
-    lateinit var description: String
+    var description: String = ""
 
 }

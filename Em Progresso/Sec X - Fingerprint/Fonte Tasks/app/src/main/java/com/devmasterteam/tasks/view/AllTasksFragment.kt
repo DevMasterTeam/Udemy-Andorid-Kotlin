@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.devmasterteam.tasks.R
 import com.devmasterteam.tasks.databinding.FragmentAllTasksBinding
 import com.devmasterteam.tasks.service.constants.TaskConstants
 import com.devmasterteam.tasks.service.listener.TaskListener
@@ -19,30 +17,23 @@ import com.devmasterteam.tasks.viewmodel.TaskListViewModel
 
 class AllTasksFragment : Fragment() {
 
-    private lateinit var mViewModel: TaskListViewModel
+    private lateinit var viewModel: TaskListViewModel
     private var _binding: FragmentAllTasksBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var mListener: TaskListener
-    private val mAdapter = TaskAdapter()
-    private var mTaskFilter = 0
+    private val adapter = TaskAdapter()
+    private var taskFilter = 0
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-
-        mViewModel = ViewModelProvider(this).get(TaskListViewModel::class.java)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
+        viewModel = ViewModelProvider(this).get(TaskListViewModel::class.java)
         _binding = FragmentAllTasksBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        // Filtro de tarefas
-        mTaskFilter = requireArguments().getInt(TaskConstants.BUNDLE.TASKFILTER, 0)
+        binding.recyclerAllTasks.layoutManager = LinearLayoutManager(context)
+        binding.recyclerAllTasks.adapter = adapter
 
-        val recycler = binding.recyclerAllTasks
-        recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = mAdapter
+        taskFilter = requireArguments().getInt(TaskConstants.BUNDLE.TASKFILTER, 0)
 
-        mListener = object : TaskListener {
+        val listener = object : TaskListener {
             override fun onListClick(id: Int) {
                 val intent = Intent(context, TaskFormActivity::class.java)
                 val bundle = Bundle()
@@ -52,28 +43,28 @@ class AllTasksFragment : Fragment() {
             }
 
             override fun onDeleteClick(id: Int) {
-                mViewModel.deleteTask(id)
+                viewModel.delete(id)
             }
 
             override fun onCompleteClick(id: Int) {
-                mViewModel.completeTask(id)
+                viewModel.status(id, true)
             }
 
             override fun onUndoClick(id: Int) {
-                mViewModel.undoTask(id)
+                viewModel.status(id, false)
             }
         }
+        adapter.attachListener(listener)
 
         // Cria os observadores
         observe()
 
-        return root
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        mAdapter.attachListener(mListener)
-        mViewModel.list(mTaskFilter)
+        viewModel.list(taskFilter)
     }
 
     override fun onDestroyView() {
@@ -82,18 +73,20 @@ class AllTasksFragment : Fragment() {
     }
 
     private fun observe() {
-        mViewModel.taskList.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                mAdapter.updateList(it)
-            }
-        })
+        viewModel.tasks.observe(viewLifecycleOwner) {
+            adapter.updateTasks(it)
+        }
 
-        mViewModel.validation.observe(viewLifecycleOwner, Observer {
-            if (it.success()) {
-                Toast.makeText(context, R.string.task_removed, Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, it.failure(), Toast.LENGTH_SHORT).show()
+        viewModel.delete.observe(viewLifecycleOwner) {
+            if (!it.status()) {
+                Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()
             }
-        })
+        }
+
+        viewModel.status.observe(viewLifecycleOwner) {
+            if (!it.status()) {
+                Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

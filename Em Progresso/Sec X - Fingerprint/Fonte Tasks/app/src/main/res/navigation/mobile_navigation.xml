@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/nav_next_tasks"
         android:name="com.devmasterteam.tasks.view.AllTasksFragment"
-        android:label="@string/todas_tarefas"
+        android:label="@string/proximos_7_dias"
         tools:layout="@layout/fragment_all_tasks" >
         <argument
             android:name="taskfilter"

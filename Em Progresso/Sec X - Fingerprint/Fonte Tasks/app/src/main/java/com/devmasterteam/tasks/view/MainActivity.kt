@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.ui.*
 import com.devmasterteam.tasks.R
@@ -19,31 +18,29 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mViewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
         binding.appBarMain.fab.setOnClickListener {
-            startActivity(Intent(this, TaskFormActivity::class.java))
+            startActivity(Intent(applicationContext, TaskFormActivity::class.java))
         }
 
         // Navegação
         setupNavigation()
 
+        viewModel.loadUserName()
+
         // Observadores
         observe()
-    }
-
-    override fun onResume() {
-        mViewModel.loadUserName()
-        super.onResume()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -61,29 +58,24 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // Escuta ação de click para logout
         navView.setNavigationItemSelectedListener {
             if (it.itemId == R.id.nav_logout) {
-                mViewModel.logout()
+                viewModel.logout()
+                startActivity(Intent(applicationContext, LoginActivity::class.java))
+                finish()
             } else {
-                NavigationUI.onNavDestinationSelected(it, navController);
-                drawerLayout.closeDrawer(GravityCompat.START);
+                NavigationUI.onNavDestinationSelected(it, navController)
+                drawerLayout.closeDrawer(GravityCompat.START)
             }
             true
         }
+
     }
 
     private fun observe() {
-        mViewModel.logout.observe(this, Observer {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        })
-
-        mViewModel.userName.observe(this, Observer {
-            val navView = findViewById<NavigationView>(R.id.nav_view)
-            val header = navView.getHeaderView(0)
-
+        viewModel.name.observe(this) {
+            val header = binding.navView.getHeaderView(0)
             header.findViewById<TextView>(R.id.text_name).text = it
-        })
+        }
     }
 }

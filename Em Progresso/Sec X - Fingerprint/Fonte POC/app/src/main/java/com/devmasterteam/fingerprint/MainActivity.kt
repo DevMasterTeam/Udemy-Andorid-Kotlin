@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (FingerprintHelper.isAuthenticationAvailable(this)) {
+        if (FingerprintHelper.isBiometricAvailable(this)) {
             // Executor - Funciona como um thread para a autenticação
             val executor: Executor = ContextCompat.getMainExecutor(this)
 
