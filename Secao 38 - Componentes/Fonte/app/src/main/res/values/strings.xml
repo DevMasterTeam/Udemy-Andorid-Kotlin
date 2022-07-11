@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Componentes</string>
+
+    <string-array name="weight_array">
+        <item>Gramas</item>
+        <item>Kg</item>
+        <item>Arroba</item>
+        <item>Toneladas</item>
+    </string-array>
+</resources>
