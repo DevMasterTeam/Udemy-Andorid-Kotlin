@@ -12,7 +12,7 @@ import com.devmasterteam.mvvm.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mViewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         // Variáveis
-        mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         // Eventos
         binding.buttonLogin.setOnClickListener(this)
@@ -31,14 +31,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         val name = binding.editName.text.toString()
-        mViewModel.doLogin(name)
+        viewModel.doLogin(name)
     }
 
     private fun createObservers() {
-        mViewModel.welcome().observe(this, Observer {
+        viewModel.welcome().observe(this, Observer {
             binding.textWelcome.text = it
         })
-        mViewModel.login().observe(this, Observer {
+        viewModel.login().observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
     }

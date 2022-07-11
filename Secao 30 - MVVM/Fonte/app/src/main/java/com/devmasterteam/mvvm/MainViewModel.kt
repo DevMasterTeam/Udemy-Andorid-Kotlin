@@ -6,27 +6,27 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
 
-    private var mTextWelcome = MutableLiveData<String>()
-    private var mToastNotification = MutableLiveData<String>()
-    private val mPersonRepository = PersonRepository()
+    private var textWelcome = MutableLiveData<String>()
+    private var toastNotification = MutableLiveData<String>()
+    private val personRepository = PersonRepository()
 
     init {
-        mTextWelcome.value = "Bom dia!"
+        textWelcome.value = "Bom dia!"
     }
 
     fun welcome(): LiveData<String> {
-        return mTextWelcome
+        return textWelcome
     }
 
     fun login(): LiveData<String> {
-        return mToastNotification
+        return toastNotification
     }
 
     fun doLogin(email: String) {
-        if (this.mPersonRepository.login(email))
-            mToastNotification.setValue("Success")
+        if (this.personRepository.login(email))
+            toastNotification.setValue("Success")
         else
-            mToastNotification.setValue("Falha")
+            toastNotification.setValue("Falha")
     }
 
 }
