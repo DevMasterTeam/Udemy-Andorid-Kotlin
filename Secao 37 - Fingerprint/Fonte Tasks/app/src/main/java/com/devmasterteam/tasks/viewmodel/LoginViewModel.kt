@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.devmasterteam.tasks.service.constants.TaskConstants
-import com.devmasterteam.tasks.service.helper.FingerprintHelper
+import com.devmasterteam.tasks.service.helper.BiometricHelper
 import com.devmasterteam.tasks.service.listener.APIListener
 import com.devmasterteam.tasks.service.model.PersonModel
 import com.devmasterteam.tasks.service.model.PriorityModel
@@ -14,7 +14,6 @@ import com.devmasterteam.tasks.service.repository.PersonRepository
 import com.devmasterteam.tasks.service.repository.PriorityRepository
 import com.devmasterteam.tasks.service.repository.SecurityPreferences
 import com.devmasterteam.tasks.service.repository.remote.RetrofitClient
-import kotlin.math.log
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -74,7 +73,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         }
 
         // Usuário está logado E possui autenticação biométrica
-        _biometrics.value = logged && FingerprintHelper.isBiometricAvailable(getApplication())
+        _biometrics.value = logged && BiometricHelper.isBiometricAvailable(getApplication())
     }
 
 }

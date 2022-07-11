@@ -11,7 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (FingerprintHelper.isBiometricAvailable(this)) {
+        if (BiometricHelper.isBiometricAvailable(this)) {
+
             // Executor - Funciona como um thread para a autenticação
             val executor: Executor = ContextCompat.getMainExecutor(this)
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
             val biometricPrompt = BiometricPrompt(this, executor,
                 object : BiometricPrompt.AuthenticationCallback() {
                     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                         // Lógica de acordo com a aplicação
                         super.onAuthenticationSucceeded(result)
                     }
                 })
