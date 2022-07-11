@@ -10,13 +10,13 @@ import com.devmasterteam.convidados.service.repository.GuestRepository
 class GuestFormViewModel(application: Application) : AndroidViewModel(application) {
 
     // Acesso a dados
-    private val mGuestRepository: GuestRepository = GuestRepository(application.applicationContext)
+    private val guestRepository: GuestRepository = GuestRepository(application.applicationContext)
 
-    private var mSaveGuest = MutableLiveData<Boolean>()
-    val saveGuest: LiveData<Boolean> = mSaveGuest
+    private var _saveGuest = MutableLiveData<Boolean>()
+    val saveGuest: LiveData<Boolean> = _saveGuest
 
-    private var mGuest = MutableLiveData<GuestModel>()
-    val guest: LiveData<GuestModel> = mGuest
+    private var _guest = MutableLiveData<GuestModel>()
+    val guest: LiveData<GuestModel> = _guest
 
     /**
      * Salva convidado
@@ -29,9 +29,9 @@ class GuestFormViewModel(application: Application) : AndroidViewModel(applicatio
         }
 
         if (id == 0) {
-            mSaveGuest.value = mGuestRepository.save(guest)
+            _saveGuest.value = guestRepository.save(guest)
         } else {
-            mSaveGuest.value = mGuestRepository.update(guest)
+            _saveGuest.value = guestRepository.update(guest)
         }
     }
 
@@ -39,7 +39,7 @@ class GuestFormViewModel(application: Application) : AndroidViewModel(applicatio
      * Carrega convidado
      * */
     fun load(id: Int) {
-        mGuest.value = mGuestRepository.get(id)
+        _guest.value = guestRepository.get(id)
     }
 
 }

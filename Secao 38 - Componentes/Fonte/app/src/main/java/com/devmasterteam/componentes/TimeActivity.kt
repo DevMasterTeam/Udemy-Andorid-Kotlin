@@ -17,8 +17,8 @@ class TimeActivity : AppCompatActivity(), View.OnClickListener, DatePickerDialog
 
     private lateinit var binding: ActivityTimeBinding
 
-    private var mBrazilLocale = Locale("pt", "BR")
-    private val mSimpleDateFormat = SimpleDateFormat("dd/MM/yyyy", mBrazilLocale)
+    private var brazilLocale = Locale("pt", "BR")
+    private val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", brazilLocale)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +81,7 @@ class TimeActivity : AppCompatActivity(), View.OnClickListener, DatePickerDialog
         calendar.set(year, month, dayOfMonth)
 
         // Converte a data selecionada para o formato imposto pelo SimpleDateFormat
-        val date = mSimpleDateFormat.format(calendar.time)
+        val date = simpleDateFormat.format(calendar.time)
         binding.buttonDate.text = date
     }
 

@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
     private lateinit var binding: ActivityMainBinding
 
     // Lista de valores - Spinner dinâmico
-    private val mList = listOf("Gramas", "Kg", "Arroba", "Tonelada")
+    private val list = listOf("Gramas", "Kg", "Arroba", "Tonelada")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
      * Carrega valores dinâmicos spinner
      */
     private fun loadSpinner() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mList)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerDynamic.adapter = adapter
     }

@@ -10,7 +10,7 @@ import java.util.ArrayList
 class GuestRepository private constructor(context: Context) {
 
     // Acesso ao banco de dados
-    private var mGuestDataBaseHelper: GuestDataBaseHelper = GuestDataBaseHelper(context)
+    private var guestDataBaseHelper: GuestDataBaseHelper = GuestDataBaseHelper(context)
 
     /**
      * Singleton
@@ -33,7 +33,7 @@ class GuestRepository private constructor(context: Context) {
 
         var guest: GuestModel? = null
         return try {
-            val db = mGuestDataBaseHelper.readableDatabase
+            val db = guestDataBaseHelper.readableDatabase
 
             // Colunas que serão retornadas
             val projection = arrayOf(
@@ -79,7 +79,7 @@ class GuestRepository private constructor(context: Context) {
         return try {
 
             // writableDatabase - Para fazer escrita de dados
-            val db = mGuestDataBaseHelper.writableDatabase
+            val db = guestDataBaseHelper.writableDatabase
 
             val contentValues = ContentValues()
             contentValues.put(DataBaseConstants.GUEST.COLUMNS.NAME, guest.name)
@@ -97,7 +97,7 @@ class GuestRepository private constructor(context: Context) {
     fun getAll(): List<GuestModel> {
         val list: MutableList<GuestModel> = ArrayList()
         return try {
-            val db = mGuestDataBaseHelper.readableDatabase
+            val db = guestDataBaseHelper.readableDatabase
 
             // Colunas que serão retornadas
             val projection = arrayOf(
@@ -148,7 +148,7 @@ class GuestRepository private constructor(context: Context) {
     fun getPresent(): List<GuestModel> {
         val list: MutableList<GuestModel> = ArrayList()
         return try {
-            val db = mGuestDataBaseHelper.readableDatabase
+            val db = guestDataBaseHelper.readableDatabase
 
             val cursor = db.rawQuery("SELECT id, name, presence FROM Guest WHERE presence = 1", null)
 
@@ -177,7 +177,7 @@ class GuestRepository private constructor(context: Context) {
     fun getAbsent(): List<GuestModel> {
         val list: MutableList<GuestModel> = ArrayList()
         return try {
-            val db = mGuestDataBaseHelper.readableDatabase
+            val db = guestDataBaseHelper.readableDatabase
 
             val cursor = db.rawQuery("SELECT id, name, presence FROM Guest WHERE presence = 0", null)
 
@@ -205,7 +205,7 @@ class GuestRepository private constructor(context: Context) {
      */
     fun update(guest: GuestModel): Boolean {
         return try {
-            val db = mGuestDataBaseHelper.writableDatabase
+            val db = guestDataBaseHelper.writableDatabase
 
             val contentValues = ContentValues()
             contentValues.put(DataBaseConstants.GUEST.COLUMNS.NAME, guest.name)
@@ -227,7 +227,7 @@ class GuestRepository private constructor(context: Context) {
      */
     fun delete(id: Int): Boolean {
         return try {
-            val db = mGuestDataBaseHelper.writableDatabase
+            val db = guestDataBaseHelper.writableDatabase
             val selection = DataBaseConstants.GUEST.COLUMNS.ID + " = ?"
             val args = arrayOf(id.toString())
 
