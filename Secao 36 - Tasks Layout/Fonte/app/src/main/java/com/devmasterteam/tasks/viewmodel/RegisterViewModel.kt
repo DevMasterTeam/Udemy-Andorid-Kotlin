@@ -1,7 +1,6 @@
 package com.devmasterteam.tasks.viewmodel
 
 import android.app.Application
-import android.app.Person
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

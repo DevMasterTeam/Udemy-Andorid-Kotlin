@@ -1,6 +1,7 @@
 package com.devmasterteam.componentes
 
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -19,11 +20,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.hide()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.buttonToast.setOnClickListener(this)
         binding.buttonSnack.setOnClickListener(this)
+
         binding.buttonGetSpinner.setOnClickListener(this)
         binding.buttonSetSpinner.setOnClickListener(this)
 
@@ -43,20 +48,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
     override fun onClick(v: View) {
         when (v.id) {
             R.id.button_toast -> {
+                // A partir da API 31, Toast Notification possui ícone da aplicação
                 val toast = Toast.makeText(this, "TOAST", Toast.LENGTH_SHORT)
 
-                // Posicionamento
-                toast.setGravity(Gravity.BOTTOM, 0, 100)
+                // É possível manipular a view da toast, porém já está deprecated
+                // Como alternativa caso precise de customização, recomenda-se snack bar.
+                // toast.view
 
-                // Cor do texto - Layout original
-                // val textView = toast.view.findViewById<TextView>(android.R.id.message)
-                // textView.text = "Custom!"
-                // textView.setTextColor(Color.RED)
-
-                // Inflamos um layout criado especificamente para a toast
-                val toastLayout = layoutInflater.inflate(R.layout.toast_layout, null)
-                toast.view = toastLayout
-
+                // Posicionamento - Funciona somente até API 29
+                toast.setGravity(Gravity.TOP, 15, 50)
                 toast.show()
             }
             R.id.button_snack -> {
@@ -64,6 +64,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
                 // Mudando a cor do texto
                 snackbar.setTextColor(Color.MAGENTA)
+
+                // Caso possua uma mensagem muito grande, quantidade de linhas é customizável
+                snackbar.setTextMaxLines(5);
 
                 // Ação dentro da snackbar
                 snackbar.setAction("Desfazer", View.OnClickListener {
