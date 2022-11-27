@@ -14,6 +14,16 @@
         android:theme="@style/Theme.Componentes"
         tools:targetApi="31">
         <activity
+            android:name=".ProgressActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".DateActivity"
+            android:exported="true" />
+        <activity
             android:name=".TimeActivity"
             android:exported="true" />
         <activity

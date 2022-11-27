@@ -6,22 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".TimeActivity">
+    tools:context=".DateActivity">
 
     <Button
-        android:id="@+id/button_time_picker"
+        android:id="@+id/button_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="TimePicker dialog" />
+        android:text="Datepicker dialog" />
 
     <TextView
-        android:id="@+id/text_time_picker"
+        android:id="@+id/text_date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="64dp"
-        android:text="TimePicker"
+        android:text="DatePicker"
         android:textSize="30sp" />
 
 </LinearLayout>

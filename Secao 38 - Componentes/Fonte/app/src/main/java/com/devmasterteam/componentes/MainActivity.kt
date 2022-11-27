@@ -1,7 +1,6 @@
 package com.devmasterteam.componentes
 
 import android.graphics.Color
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -15,16 +14,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
     private lateinit var binding: ActivityMainBinding
 
-    // Lista de valores - Spinner dinâmico
-    private val list = listOf("Gramas", "Kg", "Arroba", "Tonelada")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        supportActionBar?.hide()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         binding.buttonToast.setOnClickListener(this)
         binding.buttonSnack.setOnClickListener(this)
@@ -35,6 +29,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         binding.spinnerDynamic.onItemSelectedListener = this
 
         binding.seekbar.setOnSeekBarChangeListener(this)
+        binding.buttonGetSeekbar.setOnClickListener(this)
+        binding.buttonSetSeekbar.setOnClickListener(this)
 
         binding.switchOnOff.setOnCheckedChangeListener(this)
         binding.checkboxOnOff.setOnCheckedChangeListener(this)
@@ -48,6 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
     override fun onClick(v: View) {
         when (v.id) {
             R.id.button_toast -> {
+
                 // A partir da API 31, Toast Notification possui ícone da aplicação
                 val toast = Toast.makeText(this, "TOAST", Toast.LENGTH_SHORT)
 
@@ -89,9 +86,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
                 val selectedItemPosition = binding.spinnerStatic.selectedItemPosition
             }
             R.id.button_set_spinner -> {
-                loadSpinner()
                 binding.spinnerStatic.setSelection(1)
-                binding.spinnerDynamic.adapter = null
             }
             R.id.button_get_seekbar -> {
                 toast(binding.seekbar.progress.toString())
@@ -102,36 +97,52 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         }
     }
 
-    // Eventos Spinner
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        toast("NOTHING")
-    }
+    /**
+     * Spinner - Evento de item selecionado
+     **/
+    override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+        // parent: AdapterView - Adapter onde a seleção ocorreu
+        // view: View - Layout do elemento clicado
+        // position: Int - Posição do elemento selecionado na lista
+        // id: Long - Posição da linha selecionada
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val value = parent?.getItemAtPosition(position).toString()
+        val value = parent.getItemAtPosition(position).toString()
         toast(value)
     }
 
-    // Eventos Seekbar
+    /**
+     * Spinner - Evento que pode ser disparado quando o adapter se torna vazio
+     **/
+    override fun onNothingSelected(parent: AdapterView<*>) {
+        toast("NOTHING")
+    }
+
+    /**
+     * Seekbar - Valor alterado
+     **/
     override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        // fromUser é true quando a alteração é feita pelo toque no elemento
+        // Se a atribuição é feita por código, fromUser é false
         binding.textSeekbarValue.text = progress.toString()
     }
 
     /**
-     * Trata evento de toque inicial no Seekbar - Quando o componente começa a ser arastado
-     * */
+     * Seekbar - Quando o componente começa a ser arastado
+     **/
     override fun onStartTrackingTouch(seekBar: SeekBar) {
         toast("Start seekbar")
     }
 
     /**
-     * Trata evento de toque final no Seekbar
-     * */
+     * Seekbar - Trata evento de toque final no Seekbar
+     **/
     override fun onStopTrackingTouch(seekBar: SeekBar) {
         toast("End seekbar")
     }
 
-    // Switch E checkbox
+    /**
+     * Switch, CheckBox e RadioButton
+     **/
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
         when (buttonView.id) {
             R.id.switch_on_off -> {
@@ -171,8 +182,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
      * Carrega valores dinâmicos spinner
      */
     private fun loadSpinner() {
+        val list = listOf("Gramas", "Kg", "Arroba", "Tonelada")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Layout atua da mesma maneira, porém tem menos espaço entre os elementos
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+
         binding.spinnerDynamic.adapter = adapter
     }
 
