@@ -20,17 +20,17 @@ class TaskViewHolder(private val itemBinding: RowTaskListBinding, val listener: 
         itemBinding.textDueDate.text = ""
 
         // Eventos
-        // itemBinding.textDescription.setOnClickListener { listener.onListClick(task.id) }
-        // itemBinding.imageTask.setOnClickListener { }
+        itemBinding.textDescription.setOnClickListener { }
+        itemBinding.imageTask.setOnClickListener { }
 
         itemBinding.textDescription.setOnLongClickListener {
             AlertDialog.Builder(itemView.context)
-                .setTitle(R.string.remocao_de_tarefa)
-                .setMessage(R.string.remover_tarefa)
-                .setPositiveButton(R.string.sim) { dialog, which ->
-                    // listener.onDeleteClick(task.id)
+                .setTitle(R.string.title_task_removal)
+                .setMessage(R.string.label_remove_task)
+                .setPositiveButton(R.string.button_yes) { _, _ ->
+
                 }
-                .setNeutralButton(R.string.cancelar, null)
+                .setNeutralButton(R.string.button_cancel, null)
                 .show()
             true
         }

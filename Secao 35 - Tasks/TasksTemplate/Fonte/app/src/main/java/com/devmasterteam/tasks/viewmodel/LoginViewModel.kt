@@ -2,19 +2,8 @@ package com.devmasterteam.tasks.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.devmasterteam.tasks.service.repository.local.PreferencesManager
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
-
-    /**
-     * Faz login usando API
-     */
-    fun doLogin(email: String, password: String) {
-    }
-
-    /**
-     * Verifica se usuário está logado
-     */
-    fun verifyLoggedUser() {
-    }
-
+    private val preferencesManager = PreferencesManager.getInstance(application.applicationContext)
 }

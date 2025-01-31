@@ -7,19 +7,18 @@
         <item
             android:id="@+id/nav_all_tasks"
             android:icon="@drawable/ic_seven_days"
-            android:title="@string/todas_tarefas" />
+            android:title="@string/action_all_tasks" />
         <item
             android:id="@+id/nav_next_tasks"
             android:icon="@drawable/ic_seven_days"
-            android:title="@string/proximos_7_dias" />
+            android:title="@string/action_next_seven_days" />
         <item
             android:id="@+id/nav_expired"
             android:icon="@drawable/ic_overdue"
-            android:title="@string/expiradas" />
+            android:title="@string/action_expired" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"
-            android:title="@string/sair" />
+            android:title="@string/action_logout" />
     </group>
-
 </menu>

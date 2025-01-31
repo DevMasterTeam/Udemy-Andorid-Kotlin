@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/descricao"
+        android:text="@string/hint_description"
         app:layout_constraintStart_toEndOf="@id/image_task"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/prioridade"
+        android:text="@string/label_priority"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/image_task"
         app:layout_constraintTop_toBottomOf="@id/text_description" />
@@ -39,7 +39,7 @@
         android:id="@+id/text_due_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/data_limite"
+        android:text="@string/label_due_date"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

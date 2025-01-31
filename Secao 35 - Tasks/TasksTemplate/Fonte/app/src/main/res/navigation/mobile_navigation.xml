@@ -8,19 +8,33 @@
     <fragment
         android:id="@+id/nav_all_tasks"
         android:name="com.devmasterteam.tasks.view.AllTasksFragment"
-        android:label="@string/todas_tarefas"
-        tools:layout="@layout/fragment_all_tasks" />
+        android:label="@string/action_all_tasks"
+        tools:layout="@layout/fragment_all_tasks" >
+        <argument
+            android:name="taskfilter"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_next_tasks"
-        android:name="com.devmasterteam.tasks.view.NextTasksFragment"
-        android:label="@string/proximos_7_dias"
-        tools:layout="@layout/fragment_next_tasks" />
+        android:name="com.devmasterteam.tasks.view.AllTasksFragment"
+        android:label="@string/action_next_seven_days"
+        tools:layout="@layout/fragment_all_tasks" >
+        <argument
+            android:name="taskfilter"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_expired"
-        android:name="com.devmasterteam.tasks.view.ExpiredTasksFragment"
-        android:label="@string/expiradas"
-        tools:layout="@layout/fragment_expired_tasks" />
-
+        android:name="com.devmasterteam.tasks.view.AllTasksFragment"
+        android:label="@string/action_expired"
+        tools:layout="@layout/fragment_all_tasks" >
+        <argument
+            android:name="taskfilter"
+            app:argType="integer"
+            android:defaultValue="2" />
+    </fragment>
 </navigation>
