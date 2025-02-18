@@ -8,8 +8,8 @@ fun main() {
     // Dentro do bloco let, a referência ao objeto passa a ser "it".
     str?.let {
         println("Scope function")
-        it.uppercase()
-        it.length
+        println(it.uppercase())
+        println(it.length)
     }
 
 }
