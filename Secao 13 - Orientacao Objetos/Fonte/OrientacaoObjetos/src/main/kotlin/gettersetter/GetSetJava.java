@@ -1,4 +1,4 @@
-package getterSetter;
+package gettersetter;
 
 public class GetSetJava {
     public int idade;

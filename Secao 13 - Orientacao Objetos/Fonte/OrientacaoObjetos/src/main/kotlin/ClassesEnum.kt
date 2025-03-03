@@ -1,6 +1,3 @@
-import java.time.Month
-import java.util.*
-
 /**
  * Classes enum permitem a definição de uma lista de valores dentro da classe.
  * Útil quando é necessário transitar um intervalo de valores conhecidos,
@@ -12,22 +9,16 @@ fun main() {
     // Ou uma classe que tenha os dias da semana
 
     // Percorre a lista de valores
-    for (p in PRIORIDADE.values()) {
+    for (p in PRIORIDADE.entries) {
         println(p)
     }
 
     // Valor associado a prioridade
     println(PRIORIDADE2.ALTA.id)
-
 }
 
 enum class PRIORIDADE {
-    BAIXA {
-        override fun toString(): String {
-            return "Essa prioridade é baixa."
-        }
-    },
-    MEDIA, ALTA
+    BAIXA, MEDIA, ALTA
 }
 
 enum class PRIORIDADE2(val id: Int) {

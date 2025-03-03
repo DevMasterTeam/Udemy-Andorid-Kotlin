@@ -1,7 +1,3 @@
-fun main() {
-
-}
-
 class Planeta {
     var nome: String = ""
         get() {

@@ -1,12 +1,14 @@
 /**
  * Um construtor é um método chamado no momento que uma classe é instanciada.
- * É muito comum que no construtor haja a atribuição de valores para os atributos da classe.
- *
- * Nesse exemplo existe um construtor primário e dois secundários.
+ * -----------
+ * Nesse exemplo existe um construtor primário e um secundário.
  * Existem alguns detalhes nos contrutores secundários que devem ser observados.
  * 1. Atributos não podem ser val nem var, devem somente ter o nome do atributo e o tipo.
  * 2. Não podem ser acessados dentro ou fora da classe.
- * Se existe algum valor a mais no construtor secundário, variável dentro da classe deve ser declarada.
+ * Se existe algum valor a mais no construtor secundário,
+ * variável no escopo da classe deve ser declarada para que o valor possa ser usado futuramente.
+ * ------------
+ * this referencia o objeto gerado pela classe.
  */
 fun main() {
     val p1 = Pessoa4("Davy Jones")
