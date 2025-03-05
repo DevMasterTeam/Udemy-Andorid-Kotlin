@@ -5,6 +5,9 @@
  *
  * A diferença de interface com classe abstrata é que interfaces não podem armazenar estados.
  * Ou seja, os atributos da classe não podem ter valores.
+ *
+ * É possível implementar mais de uma interface, o que não pode ser feito em herança.
+ * Herança só pode ser feita de uma classe.
  * */
 
 fun main() {

@@ -6,7 +6,7 @@
  * Overload
  * Um método com mesmo nome, porém com tipos de dados ou quantidades diferentes.
  * Em outras palavras, a assinatura do método é diferente.
- * Assinatura -> nome, tipo e quantidade de parâmetros.
+ * Assinatura -> nome do método, tipo e quantidade de parâmetros.
  */
 fun main() {
     val comp = Computador2("DELL", 4500f)

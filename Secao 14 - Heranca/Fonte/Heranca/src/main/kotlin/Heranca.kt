@@ -17,7 +17,7 @@ fun main() {
 }
 
 // Classe base
-open class Maquina(val marca: String) {
+open class Maquina(private val marca: String) {
     fun minhaMarca() {
         println("Sou da marca: $marca")
     }

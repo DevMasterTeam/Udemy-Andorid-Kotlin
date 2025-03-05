@@ -9,7 +9,7 @@ fun main() {
     cachorro.nome()
 }
 
-abstract class Mamifero(val nome: String) {
+abstract class Mamifero(private val nome: String) {
     private var peso = 0f
 
     abstract fun falar()
@@ -20,7 +20,7 @@ abstract class Mamifero(val nome: String) {
 
 /**
  * Herda de mamífero
- * Implementa obrigatoriamente a função definida como abstrata na classe pai.
+ * Implementa obrigatoriamente a função definida como abstrata na classe pai / mãe.
  * Não precisa implementar métodos que não são definidos como abstratos, mas poderia com o uso do override.
  */
 class Cachorro(especie: String) : Mamifero(especie) {
