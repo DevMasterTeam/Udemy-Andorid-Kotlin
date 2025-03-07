@@ -1,6 +1,6 @@
 /**
  * Map
- *
+ * ---------------
  * Mapa são listas de dados entrada-valor. Significa que para uma chave, existe um valor associado.
  * Assim como Set, map também não permite elementos duplicados.
  */
@@ -8,6 +8,12 @@ fun main() {
 
     val map1: Map<String, String> = mapOf(Pair("França", "Paris"), Pair("França", "Paris"))
     val map2 = mutableMapOf(Pair("França", "Paris"), Pair("França", "Paris"))
+
+    // 'to' é uma maneira abreviada para criação de um Pair
+    val map3 = mapOf(
+        "api_base_url" to "https://api.example.com",
+        "api_key" to "123456789"
+    )
 
     // Todas as entradas, ou seja, chaves
     println(map1.keys)

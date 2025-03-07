@@ -1,12 +1,15 @@
 /**
  * Set
- *
+ * ---------------
  * A coleção Set não permite elementos duplicados, o que é uma característica muito útil.
  * Caso dois valores iguais sejam adicionados no Set, somente um deles será usado e não acontecerá erro.
  * */
 fun main() {
+
     // Criação de Set com String e Int. Aceita qualquer tipo de dado.
-    val set = setOf("Madrid", "São Paulo", "Berlim")
+    val set = setOf("Madrid", "São Paulo", "Berlim", 1)
+
+    // Definindo o tipo de dado aceito
     val s11: Set<Int> = setOf(1)
 
     // Cria um set mutável com elementos repetidos

@@ -1,5 +1,5 @@
 /**
- * Coleçõs - Grupo de valores variável
+ * Coleçõs - Agrupamento de valores
  * Uma coleção geralmente contém um número de objetos (também pode ser zero) do mesmo tipo.
  *
  * Os tipos de coleção abaixo serão tratados:
@@ -14,6 +14,8 @@
  * Imutáveis - Uma vez criada, não é possível adicionar ou remover valores, somente obter.
  */
 fun main() {
+
+    // Inicializa dados
     val data = listaDeDados()
 
     // Tenho receitas na lista?
@@ -32,26 +34,23 @@ fun main() {
     println("A primeira receita é: ${data.first().nome}.")
     println("A última receita é: ${data.last().nome}.")
 
-    // Caso a lista possa ser vazia
+    // Caso a lista possa ser vazia - Evita que uma exceção seja lançada
     // data.firstOrNull()
     // data.lastOrNull()
 
-    // Qual a soma de calorias?
+    // Qual a soma de calorias do todas as receitas?
     val sumCalories = data.sumOf { it.calorias }
     println("A soma de calorias é: $sumCalories")
 
     // Sei como fazer panqueca? E sushi?
-    val knowPanqueke = data.filter { it.nome == "Panqueca" }.any()
+    val knowPanqueke = data.any { it.nome == "Panqueca" }
     println("Sei fazer panqueca? ${if (knowPanqueke) "sim" else "não"}")
 
-    val knowSushi = data.filter { it.nome == "Sushi" }.any()
+    val knowSushi = data.any { it.nome == "Sushi" }
     println("Sei fazer sushi? ${if (knowSushi) "sim" else "não"}")
 
     // Me dê as duas primeiras receitas
-    val firstTwo = data.take(2)
-    for (x in firstTwo.withIndex()) {
-        println("${x.index + 1} - ${x.value.nome}")
-    }
+    val firstTwo = data.take(2).forEach { println(it.nome) }
 
     // Quais são as comidas com mais de 500 calorias?
     data.filter { it.calorias > 500 }.forEach { println(it.nome) }
@@ -64,7 +63,7 @@ fun main() {
     println("Menos calórica: ${menosCal?.nome}")
 
     // Faça uma lista com o nome dos pratos
-    data.map { it.nome }
+    data.map { it.nome }.forEach { println(it) }
 
     // Qual a média de caloria de todas as receitas?
     val media = data.map { it.calorias }.average()
@@ -77,15 +76,27 @@ fun main() {
     // Eliminar receitas com mesmo nome
     println(data.distinctBy { it.nome })
 
-    // Ordenar uma lista
+    // Ordenar uma lista - Crescente
     listaInteiros.sorted()
+
+    // Ordenar uma lista - Decrescente
     listaInteiros.sortedDescending()
 
     // Inverter uma lista
     listaInteiros.reversed()
+
+    // Exemplo concatenando várias ações
+    val frutas = listOf("banana", "avocado", "apple", "kiwifruit")
+    frutas
+        .filter { it.startsWith("a") }
+        .sorted()
+        .map { it.uppercase() }
+        .forEach { println(it) }
 }
 
-// Retorna lista de dados
+/**
+ * Retorna lista de dados
+ * */
 private fun listaDeDados(): List<Receita> {
     return listOf(
         Receita(
@@ -116,5 +127,6 @@ private fun listaDeDados(): List<Receita> {
     )
 }
 
+// Classes de dados
 data class Receita(val nome: String, val calorias: Int, val ingredientes: List<Ingrediente> = listOf())
 data class Ingrediente(val nome: String, val quantidade: Int)
