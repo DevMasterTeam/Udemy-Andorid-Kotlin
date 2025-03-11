@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context=".AtributosActivity">
+
+    <!-- (Padding) Direita, esquerda, acima, abaixo - valores aplicados de uma vez -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:padding="8dp"
+        android:text="Text A" />
+
+    <!-- Padding customizados -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#ccc"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Text A" />
+
+    <!-- Gravity - Alinhamento dentro do elemento -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#ccc"
+        android:gravity="center"
+        android:text="Text A" />
+
+    <!-- LayoutGravity - Alinhamento do elemento com o superior -->
+    <!-- O textView em relação ao LinearLayout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="32dp"
+        android:background="#ccc"
+        android:text="Text A" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#C87CF1"
+        android:text="Colorido" />
+
+    <!-- ESTOU INVISÍVEL -->
+    <!-- gone -> o elemento não ocupa espaço -->
+    <!-- invisible -> o elemento ocupa seu espaço original, só não é visto -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Colorido"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.01"
+        android:text="Family / Size / All Caps / Style"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        android:textStyle="italic" />
+
+    <!-- Caixa de texto - Variações no inputType alteram o teclado -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Texto dica"
+        android:imeOptions="actionSearch"
+        android:inputType="text" />
+
+    <!-- Atributos de customização também se aplicam -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:padding="16dp"
+        android:text="Primeiro botão"
+        android:textAllCaps="true"
+        android:textStyle="italic" />
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ElementosEScrollView" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.ElementosEScrollView" parent="Base.Theme.ElementosEScrollView" />
+
+    <style name="BigTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#ccc</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:padding">64dp</item>
+    </style>
+
+</resources>
