@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ProgramandoInterface</string>
+
+    <!--Buttons-->
+    <string name="button_login">Login</string>
+    <string name="button_register">Registrar</string>
+
+    <!--Hints-->
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Senha</string>
+
+    <!--Errors and validations-->
+    <string name="error_preencha_os_dados">Preencha os dados.</string>
+
+    <!--Messages-->
+    <string name="msg_login_com_sucesso">Login feito com sucesso!</string>
+</resources>
