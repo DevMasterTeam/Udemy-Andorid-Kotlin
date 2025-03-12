@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/edittext_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="emailAddress"
+        android:background="@color/white"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edittext_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edittext_email"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="password"
+        android:background="@color/white"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@color/black" />
+
+    <View
+        android:id="@+id/view_center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edittext_password"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="2dp"
+        android:layout_toStartOf="@id/view_center"
+        android:text="@string/button_login"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edittext_password"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@id/view_center"
+        android:text="@string/button_register"
+        android:textSize="18sp" />
+
+</RelativeLayout>

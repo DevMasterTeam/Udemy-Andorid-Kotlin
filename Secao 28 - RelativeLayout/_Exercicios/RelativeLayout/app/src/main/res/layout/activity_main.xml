@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textview_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_welcome" />
+
+    <TextView
+        android:id="@+id/textview_learn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_name"
+        android:layout_marginTop="16dp"
+        android:text="@string/title_learn_today"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view_center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/image_development"
+        android:layout_width="128dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/textview_learn"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:layout_toStartOf="@id/view_center"
+        android:contentDescription="@string/desc_development_courses"
+        android:src="@drawable/image_development" />
+
+    <ImageView
+        android:id="@+id/image_design"
+        android:layout_width="128dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/textview_learn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp"
+        android:layout_toEndOf="@id/view_center"
+        android:contentDescription="@string/desc_design_courses"
+        android:src="@drawable/image_design" />
+
+    <ImageView
+        android:id="@+id/image_ai"
+        android:layout_width="128dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/image_development"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:layout_toStartOf="@id/view_center"
+        android:contentDescription="@string/desc_ai"
+        android:src="@drawable/image_ai" />
+
+    <ImageView
+        android:id="@+id/image_explore"
+        android:layout_width="128dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/image_design"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp"
+        android:layout_toEndOf="@id/view_center"
+        android:contentDescription="@string/desc_explore_courses"
+        android:src="@drawable/image_explore" />
+
+    <TextView
+        android:id="@+id/textview_popular_courses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_ai"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/label_popular_courses" />
+
+    <TextView
+        android:id="@+id/textview_see_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_ai"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/label_see_all"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_below="@id/textview_popular_courses"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/image_background" />
+
+    <TextView
+        android:id="@+id/textview_android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/view_background"
+        android:layout_alignBottom="@id/view_background"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="@string/desc_android_courses"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/image_android"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@id/view_background"
+        android:layout_alignBottom="@id/view_background"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/desc_android_courses"
+        android:src="@drawable/ic_android"
+        app:tint="@color/white" />
+
+</RelativeLayout>
