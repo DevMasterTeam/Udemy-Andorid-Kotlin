@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/view_header"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:background="@color/brown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_recipe_name"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@id/view_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/view_header" />
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/desc_back"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/imageview_clock"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/desc_time"
+        android:src="@drawable/ic_clock"
+        app:layout_constraintEnd_toStartOf="@id/imageview_favorite"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_header"
+        app:tint="@color/brown" />
+
+    <ImageView
+        android:id="@+id/imageview_favorite"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/desc_favorite"
+        android:src="@drawable/ic_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageview_clock"
+        app:layout_constraintTop_toBottomOf="@id/view_header"
+        app:tint="@color/brown" />
+
+    <TextView
+        android:id="@+id/textview_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_duration"
+        app:layout_constraintEnd_toEndOf="@id/imageview_clock"
+        app:layout_constraintStart_toStartOf="@id/imageview_clock"
+        app:layout_constraintTop_toBottomOf="@id/imageview_clock" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_sum_favorites"
+        app:layout_constraintEnd_toEndOf="@id/imageview_favorite"
+        app:layout_constraintStart_toStartOf="@id/imageview_favorite"
+        app:layout_constraintTop_toBottomOf="@id/imageview_favorite" />
+
+    <View
+        android:id="@+id/view_separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="@color/brown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_duration" />
+
+    <TextView
+        android:id="@+id/textview_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/label_recipe_description"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_separator" />
+
+    <TextView
+        android:id="@+id/textview_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/label_ingredients"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_description" />
+
+    <ImageView
+        android:id="@+id/imageview_ingredient_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/desc_ingredient_bullet"
+        android:src="@drawable/ic_chevron_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_ingredients"
+        app:tint="@color/brown" />
+
+    <TextView
+        android:id="@+id/textview_ingredient_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_ingredient_1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_ingredient_1"
+        app:layout_constraintStart_toEndOf="@id/imageview_ingredient_1"
+        app:layout_constraintTop_toTopOf="@id/imageview_ingredient_1" />
+
+    <ImageView
+        android:id="@+id/imageview_ingredient_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/desc_ingredient_bullet"
+        android:src="@drawable/ic_chevron_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageview_ingredient_1"
+        app:tint="@color/brown" />
+
+    <TextView
+        android:id="@+id/textview_ingredient_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_ingredient_2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_ingredient_2"
+        app:layout_constraintStart_toEndOf="@id/imageview_ingredient_2"
+        app:layout_constraintTop_toTopOf="@id/imageview_ingredient_2" />
+
+    <ImageView
+        android:id="@+id/imageview_ingredient_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/desc_ingredient_bullet"
+        android:src="@drawable/ic_chevron_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageview_ingredient_2"
+        app:tint="@color/brown" />
+
+    <TextView
+        android:id="@+id/textview_ingredient_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_ingredient_3"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_ingredient_3"
+        app:layout_constraintStart_toEndOf="@id/imageview_ingredient_3"
+        app:layout_constraintTop_toTopOf="@id/imageview_ingredient_3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

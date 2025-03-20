@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Refatoracao</string>
+
+    <string name="label_course_name">Desenvolvimento Android</string>
+
+    <string name="title_learn_today">O que vamos aprender hoje?</string>
+
+    <string name="msg_popular_courses">Cursos populares</string>
+    <string name="msg_see_all">Ver todos</string>
+    <string name="msg_welcome">Olá, Nome e Sobrenome!</string>
+
+    <string name="desc_ai">Cursos de inteligência artificial</string>
+    <string name="desc_explore_courses">Explorar cursos</string>
+    <string name="desc_development_courses">Cursos de desenvolvimento de software</string>
+    <string name="desc_design_courses">Cursos de design</string>
+    <string name="desc_android_course">Curso de desenvolvimento Android</string>
+</resources>

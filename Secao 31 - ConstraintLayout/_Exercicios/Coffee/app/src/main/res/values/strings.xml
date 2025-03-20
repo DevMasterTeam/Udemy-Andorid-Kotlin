@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Coffee</string>
+
+    <string name="title_recipe_name">Cappuccino</string>
+
+    <string name="label_duration">15 minutos</string>
+    <string name="label_sum_favorites">54214</string>
+    <string name="label_recipe_description">Uma simples e perfeitamente extraída dose de espresso misturado com leite fresco e chocolate fazem esta bebida deliciosa.</string>
+    <string name="label_ingredients">Ingredientes</string>
+    <string name="label_ingredient_1">1 dose espresso</string>
+    <string name="label_ingredient_2">100ml leite</string>
+    <string name="label_ingredient_3">1 colher de chocolate em pó</string>
+
+    <string name="desc_back">Voltar</string>
+    <string name="desc_time">Tempo de preparo</string>
+    <string name="desc_favorite">Favoritar</string>
+    <string name="desc_ingredient_bullet">Ingrediente da receita</string>
+
+</resources>
