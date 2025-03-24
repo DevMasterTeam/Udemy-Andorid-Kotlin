@@ -9,10 +9,11 @@ fun main() {
 
     // Faz o uso da instância da classe para chamar diversos métodos
     // Pode-se ler "com esse objeto, faça.."
-    with(str) {
+    // With tem a capacidade de retornar a última expressão
+    val sizeReturnedFromWith = with(str) {
         uppercase()
         lowercase()
-        val size = length
+        length
     }
 
     // Nesse caso, a instância é criada e existe somente no escopo de "with"
