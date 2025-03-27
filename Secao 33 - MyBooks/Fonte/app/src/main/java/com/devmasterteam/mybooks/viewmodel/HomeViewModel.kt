@@ -1,13 +1,12 @@
 package com.devmasterteam.mybooks.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.devmasterteam.mybooks.entity.BookEntity
 import com.devmasterteam.mybooks.repository.BookRepository
 
-class HomeViewModel(application: Application) : AndroidViewModel(application) {
+class HomeViewModel : ViewModel() {
 
     // Acesso a dados
     private val repository = BookRepository.getInstance()

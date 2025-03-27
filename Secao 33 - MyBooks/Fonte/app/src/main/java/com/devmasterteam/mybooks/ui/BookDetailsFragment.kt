@@ -9,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.devmasterteam.mybooks.R
-import com.devmasterteam.mybooks.databinding.FragmentBookDetailsBinding
+import com.devmasterteam.mybooks.databinding.FragmentDetailsBinding
 import com.devmasterteam.mybooks.viewmodel.BookDetailsViewModel
 
 class BookDetailsFragment : Fragment(), View.OnClickListener {
 
-    private var _binding: FragmentBookDetailsBinding? = null
+    private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     
     private val bookDetailsViewModel: BookDetailsViewModel by viewModels()
@@ -23,7 +23,7 @@ class BookDetailsFragment : Fragment(), View.OnClickListener {
     private var bookId = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
-        _binding = FragmentBookDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
 
         // Busca ID recebido por Bundle e carega informações
         bookId = arguments?.getInt("bookId") ?: 0
