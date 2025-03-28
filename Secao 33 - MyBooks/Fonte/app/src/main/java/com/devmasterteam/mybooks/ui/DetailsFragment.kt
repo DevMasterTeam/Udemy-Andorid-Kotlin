@@ -10,14 +10,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.devmasterteam.mybooks.R
 import com.devmasterteam.mybooks.databinding.FragmentDetailsBinding
-import com.devmasterteam.mybooks.viewmodel.BookDetailsViewModel
+import com.devmasterteam.mybooks.viewmodel.DetailsViewModel
 
-class BookDetailsFragment : Fragment(), View.OnClickListener {
+class DetailsFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     
-    private val bookDetailsViewModel: BookDetailsViewModel by viewModels()
+    private val viewModel: DetailsViewModel by viewModels()
 
     // ID de referência do livro em questão
     private var bookId = 0
@@ -27,7 +27,7 @@ class BookDetailsFragment : Fragment(), View.OnClickListener {
 
         // Busca ID recebido por Bundle e carega informações
         bookId = arguments?.getInt("bookId") ?: 0
-        bookDetailsViewModel.getBook(bookId)
+        viewModel.getBook(bookId)
 
         // Atribui os eventos
         setListeners()
@@ -69,7 +69,7 @@ class BookDetailsFragment : Fragment(), View.OnClickListener {
      * Cria os observadores
      */
     private fun setObservers() {
-        bookDetailsViewModel.book.observe(viewLifecycleOwner) {
+        viewModel.book.observe(viewLifecycleOwner) {
             binding.apply {
                 textviewTitle.text = it.title
                 textviewAuthorValue.text = it.author
@@ -80,7 +80,7 @@ class BookDetailsFragment : Fragment(), View.OnClickListener {
             }
         }
 
-        bookDetailsViewModel.bookDeleted.observe(viewLifecycleOwner) {
+        viewModel.bookDeleted.observe(viewLifecycleOwner) {
             // Notifica usuário
             Toast.makeText(
                 context,
@@ -101,7 +101,7 @@ class BookDetailsFragment : Fragment(), View.OnClickListener {
         val builder = AlertDialog.Builder(context)
         builder.setMessage(getString(R.string.dialog_message_delete_item))
             .setPositiveButton(getString(R.string.dialog_positive_button_yes)) { dialog, id ->
-                bookDetailsViewModel.delete(bookId)
+                viewModel.delete(bookId)
             }
             .setNegativeButton(getString(R.string.dialog_negative_button_no)) { dialog, id ->
                 dialog.dismiss()
@@ -114,7 +114,7 @@ class BookDetailsFragment : Fragment(), View.OnClickListener {
      * Se o livro for marcado como favorito, ele será desmarcado e vice-versa.
      */
     private fun handleToggleFavorite() {
-        bookDetailsViewModel.favorite(bookId)
+        viewModel.favorite(bookId)
     }
 
     /**

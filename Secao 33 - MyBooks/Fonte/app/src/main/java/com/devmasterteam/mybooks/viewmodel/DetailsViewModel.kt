@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.devmasterteam.mybooks.entity.BookEntity
 import com.devmasterteam.mybooks.repository.BookRepository
 
-class BookDetailsViewModel : ViewModel() {
+class DetailsViewModel : ViewModel() {
 
     // Acesso a dados
     private val repository = BookRepository.getInstance()

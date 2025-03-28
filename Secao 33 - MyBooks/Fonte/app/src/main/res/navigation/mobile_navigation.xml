@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_book_details"
-        android:name="com.devmasterteam.mybooks.ui.BookDetailsFragment"
+        android:name="com.devmasterteam.mybooks.ui.DetailsFragment"
         android:label="@string/title_book_details"
         tools:layout="@layout/fragment_details" />
 
