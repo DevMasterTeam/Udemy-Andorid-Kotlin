@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.devmasterteam.mybooks.R
 import com.devmasterteam.mybooks.databinding.FragmentDetailsBinding
+import com.devmasterteam.mybooks.helper.BookConstants
 import com.devmasterteam.mybooks.viewmodel.DetailsViewModel
 
 class DetailsFragment : Fragment(), View.OnClickListener {
@@ -26,7 +27,7 @@ class DetailsFragment : Fragment(), View.OnClickListener {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
 
         // Busca ID recebido por Bundle e carega informações
-        bookId = arguments?.getInt("bookId") ?: 0
+        bookId = arguments?.getInt(BookConstants.KEY.BOOK_ID) ?: 0
         viewModel.getBook(bookId)
 
         // Atribui os eventos
