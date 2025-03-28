@@ -75,6 +75,8 @@ class BookDetailsFragment : Fragment(), View.OnClickListener {
                 textviewAuthorValue.text = it.author
                 textviewGenreValue.text = it.genre
                 checkboxFavorite.isChecked = it.favorite
+
+                setGenreBackgroundColor(it.genre)
             }
         }
 
@@ -113,6 +115,30 @@ class BookDetailsFragment : Fragment(), View.OnClickListener {
      */
     private fun handleToggleFavorite() {
         bookDetailsViewModel.favorite(bookId)
+    }
+
+    /**
+     * Define a cor de fundo do texto que representa o gênero do livro.
+     * A cor é atribuída com base no tipo de gênero do livro.
+     *
+     * - Para o gênero "Terror", a cor de fundo será vermelha.
+     * - Para o gênero "Fantasia", será usado um gradiente de fundo específico.
+     * - Para outros gêneros, a cor de fundo será teal (verde escuro).
+     */
+    private fun setGenreBackgroundColor(genre: String) {
+        when (genre) {
+            "Terror" -> {
+                binding.textviewGenreValue.setBackgroundResource(R.drawable.rounded_label_red)
+            }
+
+            "Fantasia" -> {
+                binding.textviewGenreValue.setBackgroundResource(R.drawable.rounded_label_fantasy)
+            }
+
+            else -> {
+                binding.textviewGenreValue.setBackgroundResource(R.drawable.rounded_label_teal)
+            }
+        }
     }
 
 }
