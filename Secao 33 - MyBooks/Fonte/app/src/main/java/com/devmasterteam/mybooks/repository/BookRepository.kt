@@ -44,7 +44,6 @@ class BookRepository private constructor() {
 
     /**
      * Cria uma lista inicial de livros para popular o repositório.
-     * @return Lista de 10 livros fictícios.
      */
     private fun getInitialBooks(): List<BookEntity> {
         return listOf(
