@@ -16,6 +16,9 @@ abstract class BookDataBase : RoomDatabase() {
 
     companion object {
 
+        // Nome do banco de dados
+        private const val DATABASE_NAME = "books_db"
+
         // Padrão Singleton
         private lateinit var instance: BookDataBase
 
@@ -23,10 +26,11 @@ abstract class BookDataBase : RoomDatabase() {
         fun getDatabase(context: Context): BookDataBase {
             if (!::instance.isInitialized) {
                 synchronized(this) {
-                    instance = Room.databaseBuilder(context, BookDataBase::class.java, "bookdb")
-                        .addMigrations(Migrations.migrationFromV1ToV2)
-                        .allowMainThreadQueries()
-                        .build()
+                    instance =
+                        Room.databaseBuilder(context, BookDataBase::class.java, DATABASE_NAME)
+                            .addMigrations(Migrations.migrationFromV1ToV2)
+                            .allowMainThreadQueries()
+                            .build()
                 }
             }
             return instance
