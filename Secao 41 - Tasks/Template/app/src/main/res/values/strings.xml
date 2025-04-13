@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Tasks</string>
+
+    <string name="action_settings">Configurações</string>
+    <string name="action_all_tasks">Todas as tarefas</string>
+    <string name="action_next_seven_days">Próximos 7 dias</string>
+    <string name="action_expired">Expiradas</string>
+    <string name="action_logout">Sair</string>
+
+    <string name="button_update_task">Atualizar tarefa</string>
+    <string name="button_select_date">Clique para selecionar a data limite</string>
+    <string name="button_add_task">Adicionar tarefa</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="button_register">Cadastrar</string>
+    <string name="button_new_register">Cadastre-se</string>
+    <string name="button_login">Login</string>
+    <string name="button_yes">Sim</string>
+
+    <string name="error_unexpected">Um erro inesperado ocorreu. Tente novamente mais tarde.</string>
+    <string name="error_internet_connection">Conexão à internet necessária para uso da applicação.</string>
+
+    <string name="msg_task_updated">Tarefa atualizada com sucesso!</string>
+    <string name="msg_task_created">Tarefa criada com sucesso!</string>
+    <string name="msg_task_removed">Tarefa removida com sucesso!</string>
+    <string name="msg_dont_have_account">Não tem uma conta?</string>
+
+    <string name="title_task_removal">Remoção de tarefa</string>
+
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">Senha</string>
+    <string name="hint_name">Nome</string>
+    <string name="hint_description">Descrição</string>
+
+    <string name="label_remove_task">Remover tarefa?</string>
+    <string name="label_priority">Prioridade</string>
+    <string name="label_complete">Completa</string>
+    <string name="label_due_date">Data limite</string>
+
+</resources>
