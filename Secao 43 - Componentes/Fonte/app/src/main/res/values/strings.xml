@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Componentes</string>
+
+    <string name="time_format">%02d:%02d</string>
+
+    <string-array name="weight_array">
+        <item>Gramas</item>
+        <item>Kg</item>
+        <item>Arroba</item>
+        <item>Toneladas</item>
+    </string-array>
+</resources>
